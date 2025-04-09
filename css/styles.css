@@ -1,0 +1,268 @@
+ul,ol{
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+a{
+    text-decoration: none;
+}
+
+h1,h2,h3,h4,h5,h6,p{
+    margin: 0;
+}
+
+img{
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+button{
+    cursor: pointer;
+}
+
+body{
+    font-family: Poppins,sans-serif;
+    background-color:  #fff;
+    color: #22343d;
+}
+.container{
+    max-width: 411px ;
+    padding:0 21px ;
+    margin:0 auto ;
+}
+
+@media (min-width:1200px) {
+    .container{
+    max-width: 1150px ;
+    padding:0 20px ;
+}
+}
+.header-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header {
+   
+}
+.header-logo {
+font-weight: 700;
+font-size: 30px;
+line-height: 0.93;
+color: #173a56;
+display: flex;
+align-items: center;
+gap: 16px;
+display: flex;
+align-items: center;
+}
+
+.header-nav-list {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
+}
+.header-nav-link {
+font-weight: 400;
+font-size: 16px;
+line-height: 1.75;
+color: #22343d;
+display: block;
+padding-top: 26px;
+padding-bottom: 26px;
+}
+.active{
+    font-weight: 600;
+}
+.header-btn-list {
+    display: flex;
+    gap: 21px;
+    align-items: end;
+    justify-content: end;
+    
+}
+
+
+.header-btn {
+min-width:105px;
+height: 42px;
+border: 1px solid #bcd0e5;
+border-radius: 4px;
+font-weight: 600;
+font-size: 16px;
+text-align: center;
+color: #173a56;
+background-color: transparent;
+}
+
+.header-btn:hover,.header-btn:focus{
+    color: #fff;
+    background-color: #02897a;
+}
+
+.content{
+    margin-bottom: 25px;
+    
+}
+.content-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column-reverse;
+}
+
+@media (min-width:1200px) {
+    .content-container{
+        flex-direction: row;
+    }
+    
+}
+
+.item{
+font-weight: 700;
+font-size: 36px;
+line-height: 1.5;
+color: #22343d;
+margin-bottom: 18px;
+max-width: 353px;
+text-align: center;
+}
+
+@media (min-width:1200px)  {
+    .item{
+        font-size: 40px;
+        text-align: left;
+        max-width: 392px;
+    }
+}
+
+.item-text{
+max-width: 432px;
+font-family: "Poppins", sans-serif;
+font-weight: 400;
+font-size: 18px;
+line-height: 1.55556;
+color: #22343d;
+margin-bottom: 45px;
+text-align: center;
+}
+
+@media (min-width:1200px) {
+    .item-text{
+        text-align: left;
+    }
+    
+}
+.content-btn-list{
+    display: flex;
+    gap: 30px;
+}
+.content-start-btn{
+    min-width: 178px;
+    height: 53px;
+font-weight: 700;
+font-size: 16px;
+color: #fff;
+border-radius: 4px;
+background-color: #02897a;
+}
+
+.content-video-btn{
+    min-width: 164px;
+    height: 53px;
+    border: none;
+    background-color: transparent;
+font-weight: 600;
+font-size: 16px;
+text-decoration: underline;
+text-decoration-skip-ink: none;
+color: #02897a;
+}
+
+.about{
+    padding-top: 102px;
+    padding-bottom: 100px;
+}
+.about-title{
+font-weight: 700;
+font-size: 32px;
+text-align: center;
+color: #22343d;
+max-width: 498px;
+margin-right: auto;
+margin-left: auto;
+margin-bottom: 50px;
+}
+
+.about-list{
+    display: flex;
+    justify-content: space-between;
+}
+
+.about-list-item{
+    width: calc((100% - 90px)/4);
+}
+
+.about-item-title{
+font-weight: 600;
+font-size: 22px;
+color: #22343d;
+margin-bottom: 8px;
+}
+
+.about-item-title::before{
+    content: "";
+    border-radius: 19px;
+width: 54px;
+height: 54px;
+display: block;
+margin-bottom: 8px;
+background-repeat: no-repeat;
+background-position: center;
+}
+
+.about-list-item:nth-child(1) .about-item-title::before{
+    background-color: #02897a;
+    background-image: url(../images/icon1.svg);
+}
+
+.about-list-item:nth-child(2) .about-item-title::before{
+    background-color: #4d8dff;
+    background-image: url(../images/icon2.svg);
+}
+.about-list-item:nth-child(3) .about-item-title::before{
+    background-color:  #740a76;
+    background-image: url(../images/icon3.svg);
+}
+.about-list-item:nth-child(4) .about-item-title::before{
+    background-color:  #f03e3d;
+    background-image: url(../images/icon4.svg);
+}
+
+.about-item-text{
+font-weight: 400;
+font-size: 16px;
+line-height: 1.625;
+color: #22343d;
+}
+
+.about-btn{
+    border-radius: 4px;
+min-width: 175px;
+height: 53px;
+background-color: #02897a;
+margin-top: 50px;
+border: none;
+cursor: pointer;
+font-weight: 700;
+font-size: 16px;
+color: #fff;
+display: block;
+margin-right: auto;
+margin-left: auto;
+}
+
