@@ -38,3 +38,70 @@
 
 //     }
 // }
+
+// const chopShop = {
+//   stones: [
+//     { name: "Emerald", price: 1300, quantity: 4 },
+//     { name: "Diamont", price: 2700, quantity: 3 },
+//     { name: "Sapphire", price: 1400, quantity: 7 },
+//     { name: "Emerald", price: 800, quantity: 2 },
+//   ],
+// };
+
+// calcTotalPrice(stoneName) {
+//     const stone = this.stones.find(item => item.name === stoneName);
+//     if (!stone) {
+//         return `${stoneName}`;
+//     }
+//     return stone.price * stone.quantity;
+
+// }
+
+// console.log(chopShop.calcTotalPrice("Sapphire"));
+//           параметри
+// function add(a, b, arr) {
+//   console.log("add", this);
+//   console.log(a, b, arr);
+// }
+
+// const objA = {
+//   a: 5,
+//   b: 10,
+// };
+
+// const objB = {
+//   x: 15,
+//   y: 100,
+// };
+
+// add.call(objA);
+// objA - першим аргументом буде той об'єкт який буде контекстом у нашій фунції
+// add.call(objB, 5, "tototo", [1, 2]);
+// a - 5 b - "tototo"   arr -  [1, 2] - після об'єкта ми як аргументи передаємо значення наших параметрів
+
+// add.apply(objB, [100, "lalala", [10, 20]]);
+// apply - після об'єкта ми як аргументи передаємо значення наших параметрів але вкладаємо їх у масив
+
+function changeColor(color) {
+  console.log(this);
+  // Звертаємось до параметра color і кажемо присвой якесь значення color яке нам буде приходити нове
+  this.color = color;
+}
+
+const hat = {
+  color: "black",
+};
+
+const sweater = {
+  color: "green",
+};
+const changeHutColor = changeColor.bind(hat, "red");
+//changeHutColor - нова змінна куди буде зберігатися результат
+// changeColor.bind - звертаємось фо функції крапка метод bind
+// hat, "red"- звертаємось до об'єкта hat кома і присвоюємо новий колір "red" який буде відображатись під час виклику
+// функції changeHutColor();
+// changeHutColor();
+// console.log(hat);
+
+const changeSweaterColor = changeColor.bind(sweater, "blue");
+changeSweaterColor();

@@ -30,13 +30,18 @@
 //   },
 // };
 
+// function showName() {
+//   console.log(this);
+//   console.log(this.userName);
+// }
 
-
-
-
-
-
-
-
+// const user = {
+//   userName: "Kate",
+// };
+//              посилання на функцію
+// user.showName = showName;
+// console.log(user.showName);
+// Під час виклику запуститься функція showName але в контексті (this) user тому що він стоїть з ліва під час виклику
+// user.showName();
 
 
