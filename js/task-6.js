@@ -105,3 +105,4 @@ const changeHutColor = changeColor.bind(hat, "red");
 
 const changeSweaterColor = changeColor.bind(sweater, "blue");
 changeSweaterColor();
+
