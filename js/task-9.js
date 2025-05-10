@@ -36,15 +36,15 @@
 // console.log(navLinks);
 
 // <ul> - за класом about-list
-const navEl = document.querySelector(".about-list");
+// const navEl = document.querySelector(".about-list");
 
 // Змінна звертаємось до батьківського елемента navEl і викликати у нього
 // властивість firstElementChild - передає перший дочірній елемент який знаходиться в середині
 // У консолі ми отримаємо першу НОДУ <li> яка знаходиться в середині батьківського елементу тобто <ul>
-const firstEl = navEl.firstElementChild;
+// const firstEl = navEl.firstElementChild;
 
 // console.log(firstEl);
-console.log(navEl.lastElementChild);
+// console.log(navEl.lastElementChild);
 // lastElementChild - властивість знаходить останній елемент в списку
 
 // Коли нам потрібно отримати весь список елементів <li> які в середині <ul>
@@ -54,8 +54,42 @@ console.log(navEl.lastElementChild);
 // Туту ми звертаємось до батьківського елементу navEl викликаємо у ньго властивість children яка
 // відповідає за список його нащадків ставимо квадратні дужки та індес [1] до якого елемента ми
 // звнртаємось
-const navItem = navEl.children[1];
+// const navItem = navEl.children[1];
 // console.log(navItem);
 
-console.log(navItem.nextElementSibling);
+// console.log(navItem.nextElementSibling);
 // nextElementSibling - данна властивість поверне нам наступну ноду по сиску яка йде після першого індеса
+
+// console.log(navItem.previousElementSibling);
+// previousElementSibling - данна властивість поверне нам попередню ноду по сиску
+
+// console.log(navItem.parentNode);
+// parentNode - данна властивість поверне нам батьківський елемент тобто <ul> в які вкладений наш список <li>
+
+// ВЗАЄМОДІЯ ІЗ ЗОБРАЖЕННЯМИ
+
+// const img = document.querySelector(".hero-img");
+// hero-img - назва класу в якому знаходиться зображення
+// Тут копіюється нове посилання на картинку на яку ми хочемо замінити попередню
+// img.src = "./images/taste-img1.jpg";
+// Тут пишемо альтернативний текст який має завантажитись із новим зображенням
+// img.alt = "new photo";
+
+// Звертаємось до класу картинки hero-img
+// const img = document.querySelector(".hero-img");
+// Передаємо посилання на неї ./images/logo.svg
+// img.src = "./images/logo.svg";
+// Викликаємо посилання
+// console.log(img.src);
+// console.log(img);
+
+// Тут звертаємось до заголовка <h1> <h1 class="item">Work at the speed of thought</h1>
+// Та хочемо перезаписати його заголовок Work at the speed of thought на новий
+
+const itemEl = document.querySelector(".item");
+// console.log(itemEl);
+
+itemEl.textContent = "New me";
+//textContent - дає можливісь читати та перезаписувати заголовок на новий
+// itemEl.textContent звертаємось і присвоюємо значення нового заголовку  <h1> на "New me"
+//
