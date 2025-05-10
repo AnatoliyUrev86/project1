@@ -76,11 +76,11 @@
 // img.alt = "new photo";
 
 // Звертаємось до класу картинки hero-img
-// const img = document.querySelector(".hero-img");
+const img = document.querySelector(".hero-img");
 // Передаємо посилання на неї ./images/logo.svg
-// img.src = "./images/logo.svg";
+img.src = "./images/logo.svg";
 // Викликаємо посилання
-// console.log(img.src);
+console.log(img.src);
 // console.log(img);
 
 // Тут звертаємось до заголовка <h1> <h1 class="item">Work at the speed of thought</h1>
@@ -92,4 +92,52 @@ const itemEl = document.querySelector(".item");
 itemEl.textContent = "New me";
 //textContent - дає можливісь читати та перезаписувати заголовок на новий
 // itemEl.textContent звертаємось і присвоюємо значення нового заголовку  <h1> на "New me"
-//
+
+// console.log(img.getAllritube("src"));
+// getAllritube - цей метод повертає посилання на зображення
+
+img.setAttribute("width", 80);
+// setAttribute("width", 80) - цей метод перезапише значення яке ми приймаємо як аргумент "width"
+// на значення яке стоїть після коми 80
+// Якщо в коді такого значення не має він його створить і присвоїть йому значення яке буде після коми
+
+// Для того щоб видатити атрибут наприклад ширину робимо наступне
+
+img.removeAttribute("width");
+// removeAttribute - видаляє атрибут який буде приймати як аргумент
+
+console.log(img.hasAttribute("src"));
+// hasAttribute("src") - даний метод перевіряє наявність елементу src в тегу img
+// і коли знаходить повертає true якщо не має false
+
+// Ми звертаємось до кнопок які створюються для службового користування action button
+// const actions = document.querySelectorAll(".action button");
+// Тут ми звертаємось до нашого класу actions і [2] - покажи нам кнопку за другим індексом
+// console.log(actions[2].dataset.actions);
+// dataset.actions - пишемо датасет та actions і ми отримуємо назву третьої конпки Edit
+
+// Щоб створити або перезаписати атрибут в кнопці потрібно
+// btn.dataset.btn = "red";
+
+// ВЗАЄМОДІЯ ІЗ КЛАСАМИ ЕЛЕМЕНТА
+//  <a class="header-nav-link" href="/contact">Resources</a> - ми такх у коді маємо 3шт
+// тому конкретно звертаємось до цього
+// Значення нашого href ми зберігаємо в змінну currentPageUl1 = "/contact"
+//Використовуємо шаблонні рядки ставимо крапку назва класу header-nav-link
+// Квадратні дужки і в середині передаємо змінну currentPageUl1 якій присвоюється значення "/contact"
+// ${currentPageUl1} - в середині фігурних дужок ми конкретизуємо підставляючи назву
+// змінної currentPageUl1 в яку ми збурегли значення  href="/contact"
+// В консолі ми отримуємо -  <a class="header-nav-link" href="/contact">Resources</a>
+const currentPageUl1 = "/contact";
+const linkEl = document.querySelector(
+  `.header-nav-link[href="${currentPageUl1}"]`
+);
+
+// Додаємо клас нашому посиланню <a class="header-nav-link" href="/contact">Resources</a>
+linkEl.classList.add("header-nav-link--current");
+//Звертаємось до змінної linkEl викликаємо властивість classList в ньго є метод add
+//Метод add("header-nav-link--current") приймає як аргумент клас який був header-nav-link і те що
+// хочемо додати до ньго --current все в круглих дужках
+// ВАЖЛИВО ПЕРЕД НАЗВОЮ КЛАСУ header-nav-link КРАПКУ НЕ СТАВИМО!!!!!!
+// ТОМУ ЩО МИ ВІДРАЗУ ПРАЦЮЄМО З КЛАСАМИ classList
+console.log(linkEl);
