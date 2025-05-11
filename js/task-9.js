@@ -89,7 +89,7 @@ console.log(img.src);
 const itemEl = document.querySelector(".item");
 // console.log(itemEl);
 
-itemEl.textContent = "New me";
+// itemEl.textContent = "New me";
 //textContent - дає можливісь читати та перезаписувати заголовок на новий
 // itemEl.textContent звертаємось і присвоюємо значення нового заголовку  <h1> на "New me"
 
@@ -149,12 +149,12 @@ linkEl.classList.toggle("header-nav-link--current");
 // toggle - "header-nav-link--current" якщо він знаходить такий клас він його видаляє
 // toggle- "header-nav-link--current" якщо не знаходить такий клас то додає
 
-linkEl.classList.replace("header-nav-link--current", "header-nav-link-age");
+linkEl.classList.replace("item", "page-title");
 // replace - даний метод приймає в себе два аргументи 1-й який ми хочемо видалити 2-й яким хочемо замінити
 // 1-й "header-nav-link--current" - видаляємо
 // 2-й "header-nav-link-age"- замінюємо
 
-console.log(linkEl.classList.contains("header-nav-link-age"));
+// console.log(linkEl.classList.contains("header-nav-link-age"));
 // contains - даний метод перевіряє чи є клас "header-nav-link-age" в нашому посиланні
 //Якщо знаходить - true Якщо не знаходить -false Тобто повертає булеве значення
 
@@ -169,3 +169,24 @@ titleEl.textContent = "My title";
 // відкриваючим та закриваючим тегом "h1"
 console.log(titleEl);
 
+// Щоб додати наш "h1" наприклад в тег body
+
+// document.body.append(titleEl);
+// append(titleEl) - додає наш "h1" в кінець тегу body
+// document.body.prepend(titleEl);
+// prepend(titleEl) -  додає наш "h1" на початок  тегу body
+
+const imageEl = document.createElement("img");
+// Створюємо тег для нашого забраження
+imageEl.src =
+  "https://img.freepik.com/free-vector/sweet-eyed-kitten-cartoon-character_1308-135596.jpg?t=st=1746949662~exp=1746953262~hmac=3ad33131b39ea49d18cf2a1828a429abebfecd080ef0c76165d6b778f0dc4049&w=740";
+// Передаємо посилання на наше зображення
+imageEl.alt = "Photo cat";
+// Альтернативний текст який буде підвантажувати якщо фото не завантажиться
+imageEl.width = 320;
+// Задаємо розмір ширини картинки
+document.body.append(imageEl);
+//                                       div клас
+// const BoxEl = document.querySelector("item-box");
+// div з класом "item-box" в середину ньго додаємо зображення
+// BoxEl.prepend(imageEl);
