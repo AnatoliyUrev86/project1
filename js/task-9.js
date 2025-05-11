@@ -176,17 +176,43 @@ console.log(titleEl);
 // document.body.prepend(titleEl);
 // prepend(titleEl) -  додає наш "h1" на початок  тегу body
 
-const imageEl = document.createElement("img");
+// const imageEl = document.createElement("img");
 // Створюємо тег для нашого забраження
-imageEl.src =
-  "https://img.freepik.com/free-vector/sweet-eyed-kitten-cartoon-character_1308-135596.jpg?t=st=1746949662~exp=1746953262~hmac=3ad33131b39ea49d18cf2a1828a429abebfecd080ef0c76165d6b778f0dc4049&w=740";
-// Передаємо посилання на наше зображення
-imageEl.alt = "Photo cat";
+// imageEl.src =
+//   "https://img.freepik.com/free-vector/sweet-eyed-kitten-cartoon-character_1308-135596.jpg?t=st=1746949662~exp=1746953262~hmac=3ad33131b39ea49d18cf2a1828a429abebfecd080ef0c76165d6b778f0dc4049&w=740";
+// // Передаємо посилання на наше зображення
+// imageEl.alt = "Photo cat";
 // Альтернативний текст який буде підвантажувати якщо фото не завантажиться
-imageEl.width = 320;
+// imageEl.width = 320;
 // Задаємо розмір ширини картинки
-document.body.append(imageEl);
+// document.body.append(imageEl);
 //                                       div клас
 // const BoxEl = document.querySelector("item-box");
 // div з класом "item-box" в середину ньго додаємо зображення
 // BoxEl.prepend(imageEl);
+// imageEl - ЕЛЕМЕНТ ЯКИЙ МИ СТВОРИЛИ МОЖЕМО ДОДАТИ НА СТОРІНКУ ЛИШЕ ОДИН РАЗ І ЛИШЕ В ОДНЕ МІСЦЕ
+
+// В <ul> хочемо додати ще одну <li>
+
+const navItemEl = document.createElement("li");
+navItemEl.classList.add("list-itrm");
+console.log(navItemEl);
+
+const navLinkEl = document.createElement("a");
+navItemEl.classList.add("header-nav-link");
+navLinkEl.textContent = "Profile";
+navLinkEl.href = "/profile";
+
+// Тепер ми наш тег <а> - navLinkEl поставити в середину тегу <li> - navItemEl
+navItemEl.append(navLinkEl);
+// Ми звертаємось до нашого navItemEl де заходиться тег <li>
+// append - за допомогою методу в круглі дужки додаємо посилання на наш href а саме navLinkEl
+// в якому navLinkEl.href = "/profile";- присоєно значення "/profile"
+// У консолі ми отримуємо тег  <li> і в середині тег <а>
+console.log(navItemEl);
+// Додати наш елемент в наш спивок тобто в тег <ul>
+const navEl = document.querySelector(".header-nav-list");
+// Ми звертаємося до класу тега  <ul> - ".header-nav-list"
+navEl.append(navItemEl);
+// navEl - відповідає за тег <ul> метод який додає append і в круглі дужки те що додаємо
+// а саме navItemEl - який відповідає за тег <li>
