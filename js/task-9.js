@@ -160,14 +160,14 @@ linkEl.classList.replace("item", "page-title");
 
 // ДЛЯ СТВОРЕННЯ НОВОГО ЕЛЕМЕНТУ ПОТРІБНО
 
-const titleEl = document.createElement("h1");
+// const titleEl = document.createElement("h1");
 // createElement - в данному методі ми вказуємо тег який хочемо створити "h1"
-titleEl.classList.add("page-title");
+// titleEl.classList.add("page-title");
 // add - вказуємо назву класу для тегу "h1" тобто "page-title"
-titleEl.textContent = "My title";
+// titleEl.textContent = "My title";
 // textContent - властивість якій присвоюється текст  "My title" який буде знаходитись між
 // відкриваючим та закриваючим тегом "h1"
-console.log(titleEl);
+// console.log(titleEl);
 
 // Щоб додати наш "h1" наприклад в тег body
 
@@ -246,3 +246,20 @@ const elements = options.map((option) => {
 //                        spred оператор розгортає масив
 // Під час виклику ставимо ...elements - розгортаємо наш масив і кнопки наші будуть відображатися
 colorPickerContainerEl.append(...elements);
+
+const titleEl = document.querySelector(".title");
+titleEl.innerHTML = '<a href="">My title good</a>';
+// innerHTML - данна властивість може розпарсити тобто зрозуміти що в рядок кладений тег <a href="">My title</a>
+// відкине тег і залишить наш заголовок My title який буде відображатись на сторінці
+// titleEl.innerHTML = ""; - він видалить заголовок який був My title
+
+// Якщо ми хочемо додати наш рядок
+
+titleEl.insertAdjacentHTML("beforeend", '<a href="">My title good</a>');
+// insertAdjacentHTML(1 -й арг-т Позиція на яку ми додамо рядок 2-й арг-т той рядок який хочемо додати )
+// insertAdjacentHTML - даний метод також розпарсить наш рядок і залишить заголовоу My title
+// В нас є 4 позиції на які ми можемо додавати наш рядок
+// afterbegin - після початку
+// afterend - після закінчення
+// beforbegin - перед початком
+// beforeend - після нашого елементу
