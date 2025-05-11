@@ -216,3 +216,33 @@ const navEl = document.querySelector(".header-nav-list");
 navEl.append(navItemEl);
 // navEl - відповідає за тег <ul> метод який додає append і в круглі дужки те що додаємо
 // а саме navItemEl - який відповідає за тег <li>
+
+// СТВОРЕННЯ КОЛЕКЦІЇ ЕЛЕМЕНТІВ
+
+// В нас є масив об'єктів
+const options = [
+  { label: "червоний", color: "#F443336" },
+  { label: "зелений", color: "#4CAF50" },
+  { label: "синій", color: "#2196F3" },
+];
+
+const colorPickerContainerEl = document.querySelector(".color-picker");
+// color-picker клас який створено в дів  <div class="color-picker"></div>
+// За допомогою методу map ми перебираємо наш масив
+const elements = options.map((option) => {
+  // Створюємо тег "button"
+  const buttonEl = document.createElement("button");
+  // Дщдаємо до нашого класу масив  об'єктів "color-picker_optoin" МІЖ НАЗВОЮ КЛАСУ І МАСИОМ
+  // ОБОВ'ЯЗКОВО НИЖНЄ ПІДКРЕСЛЕННЯ БЕЗ НЬОГО НЕ ПРАЦЮЄ
+  buttonEl.classList.add("color-picker_optoin");
+  // За допомогою textContent присвоюємо значення option.label тобто в середині кнопок будуть
+  // присвоєні значення label - "червоний"  "зелений" "синій"
+  buttonEl.textContent = option.label;
+  // Тут option.color наші  об'єкт звертаються до властивості color тобто кнопки буть мати задантй колір
+  buttonEl.style.backgroundColor = option.color;
+  //ОБОВ'ЯЗКОВО повертаємо наш  buttonEl
+  return buttonEl;
+});
+//                        spred оператор розгортає масив
+// Під час виклику ставимо ...elements - розгортаємо наш масив і кнопки наші будуть відображатися
+colorPickerContainerEl.append(...elements);
