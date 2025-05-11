@@ -141,3 +141,31 @@ linkEl.classList.add("header-nav-link--current");
 // ВАЖЛИВО ПЕРЕД НАЗВОЮ КЛАСУ header-nav-link КРАПКУ НЕ СТАВИМО!!!!!!
 // ТОМУ ЩО МИ ВІДРАЗУ ПРАЦЮЄМО З КЛАСАМИ classList
 console.log(linkEl);
+
+linkEl.classList.remove("header-nav-link--current");
+// remove - видаляє класи в дужках вказуємо клас який хочемо видалити "header-nav-link--current"
+
+linkEl.classList.toggle("header-nav-link--current");
+// toggle - "header-nav-link--current" якщо він знаходить такий клас він його видаляє
+// toggle- "header-nav-link--current" якщо не знаходить такий клас то додає
+
+linkEl.classList.replace("header-nav-link--current", "header-nav-link-age");
+// replace - даний метод приймає в себе два аргументи 1-й який ми хочемо видалити 2-й яким хочемо замінити
+// 1-й "header-nav-link--current" - видаляємо
+// 2-й "header-nav-link-age"- замінюємо
+
+console.log(linkEl.classList.contains("header-nav-link-age"));
+// contains - даний метод перевіряє чи є клас "header-nav-link-age" в нашому посиланні
+//Якщо знаходить - true Якщо не знаходить -false Тобто повертає булеве значення
+
+// ДЛЯ СТВОРЕННЯ НОВОГО ЕЛЕМЕНТУ ПОТРІБНО
+
+const titleEl = document.createElement("h1");
+// createElement - в данному методі ми вказуємо тег який хочемо створити "h1"
+titleEl.classList.add("page-title");
+// add - вказуємо назву класу для тегу "h1" тобто "page-title"
+titleEl.textContent = "My title";
+// textContent - властивість якій присвоюється текст  "My title" який буде знаходитись між
+// відкриваючим та закриваючим тегом "h1"
+console.log(titleEl);
+
