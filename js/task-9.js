@@ -195,7 +195,7 @@ linkEl.classList.replace("item", "page-title");
 // В <ul> хочемо додати ще одну <li>
 
 const navItemEl = document.createElement("li");
-navItemEl.classList.add("list-itrm");
+navItemEl.classList.add("list-item");
 console.log(navItemEl);
 
 const navLinkEl = document.createElement("a");
