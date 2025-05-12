@@ -99,6 +99,21 @@ function handleSubmit(event) {
   //В об'єкта події  event.викликається метод - preventDefault() - який прибирає дефолтне оновлення сторінки
   // після відправки даних
   //   console.log("submit");
-  console.dir(event.currentTarget);
+  console.dir(event.currentTarget.elements);
   // currentTarget - данна властивість дає можливість побачити властивості наших елементів
+  console.log(elements.password.value);
+  // elements - тепер до наших елементів за ключами можна звертатися
+  // elements.password - через подію звертаємось до елемента password і у консолі отримуємо посилання на нього
+  // password.value - коли ми запишемо після password value - то будемо отримувати данні які вводить користувач
+  // Створюємо об'єкт в якому присвоюємо значення полів які буде вводити користувач
+  const info = {
+    // ключ  елемент пошта значення яке введе користувач - elements.email.value
+    email: elements.email.value,
+    password: elements.password.value,
+    comment: elements.comment.value,
+  };
+  console.log(info);
+  // Для того щоб форма очистилася після того як користувач заповнив і щоб міг заповнювати інший пишемо
+  event.target.reset();
+  // reset() - даний метод очищає поля "input" після заповнення
 }
