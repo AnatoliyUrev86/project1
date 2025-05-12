@@ -87,3 +87,18 @@ checkbox.addEventListener("change", () => {
 //   alert(`Hello ${name}`);
 // ${name} - name - це буде значення імені яке введе користувач
 // }
+
+const form = document.querySelector(".js-form");
+form.addEventListener("submit", handleSubmit);
+// Подія яка відбувається у form називається "submit"
+function handleSubmit(event) {
+  // Функція handleSubmit - яка буде відпрацьовувати при настанні події
+  // Коли іде відправка даних тобто подія "submit"  за замовчуванням сторінка
+  // перезавантажується - але так не має бути
+  event.preventDefault();
+  //В об'єкта події  event.викликається метод - preventDefault() - який прибирає дефолтне оновлення сторінки
+  // після відправки даних
+  //   console.log("submit");
+  console.dir(event.currentTarget);
+  // currentTarget - данна властивість дає можливість побачити властивості наших елементів
+}
