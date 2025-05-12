@@ -263,3 +263,34 @@ titleEl.insertAdjacentHTML("beforeend", '<a href="">My title good</a>');
 // afterend - після закінчення
 // beforbegin - перед початком
 // beforeend - після нашого елементу
+
+// const tabel = [
+//   {
+//     id: "79ccb1dd-6544",
+//     amount: "788.49",
+//     data: "12-05-2025",
+//     busines: "Ullrich",
+//     name: "Personal Account",
+//     type: "invoice",
+//     account: "070099",
+//   },
+// ];
+
+// ДЛЯ СТВОРЕННЯ ТАБЛИЦІ ЗАПИТАТИ!!!!!
+// const transactoinHistory = [];
+// const tabelEl = document.querySelector(".js-transaction-tabel");
+// const markup = transactoinHistory.map((item) =>
+//   (
+//     <tr>
+//       <td>${item.id}</td>
+//       <td>${item.amount}</td>
+//       <td>${item.data}</td>
+//       <td>${item.busines}</td>
+//       <td>${item.name}</td>
+//       <td>${item.type}</td>
+//       <td>${item.account}</td>
+//     </tr>
+//   ).join("")
+// );
+
+// testEl.insertAdjacentHTML("beforeend", markup);
