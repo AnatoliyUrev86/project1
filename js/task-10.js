@@ -156,3 +156,43 @@ function handleKey(event) {
 }
 
 // ТЕПЕР ЯКІ МАНІПУЛЯЦІЇ МОЖУТЬ БУТИ З МИШЕЮ
+
+const boxEl = document.querySelector(".js-box");
+//                                   посилання на функцію як другий аргумент
+// boxEl.addEventListener("mouseenter", onMouseEnter);
+//                                   посилання на функцію як другий аргумент
+// boxEl.addEventListener("mouseleave", onMouseLeave);
+
+// mouseenter - це слухач події для миші там де він пдключений ми клікаємо на об'єкт відпрацьовує подія
+// mouseleave -  це слухач події для миші коли ми клікаємо за межами об'єкт спрацьовує він
+
+// function onMouseEnter(event) {
+//   const myBox = event.target;
+//   myBox.classList.add("box-active");
+// Тут коли ми будемо заходити мишею на елемент наш клас box-active буде додаватися
+// }
+
+// function onMouseLeave(event) {
+//   const myBox = event.target;
+//   myBox.classList.remove("box-active");
+//  Тут коли ми будемо заходити мишею на елемент наш клас box-active буде видалятися за рахунок методу remove
+// }
+
+// boxEl.addEventListener("mouseenter", onMouseOver);
+// onMouseOver - чутливий до кордону вкладеного в нього елемента
+// boxEl.addEventListener("mouseleave", onMouseOut);
+
+// function onMouseOver() {
+//   console.log("onMouseOver");
+// }
+
+// function onMouseOut() {
+//   console.log("onMouseOut");
+// }
+
+// boxEl.addEventListener("mousemover", onMouseMover);
+// mousemover - відпрацьовує під час кожного переьіщення курсору миші по елементах до яких він підключений
+// function onMouseMover(event) {
+//   console.log(event);
+// }
+

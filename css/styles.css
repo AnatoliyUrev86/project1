@@ -272,3 +272,17 @@ margin-left: auto;
     height: 53px;
     font-size: 16px;
 }
+
+.iner-box{
+    width: 100px;
+        height: 100px;
+        background-color: #ffc107;
+        border: #02897a;
+}
+
+.js-box{
+    width: 100px;
+        height: 100px;
+        background-color: #ffc107;
+        border: #02897a;
+}
