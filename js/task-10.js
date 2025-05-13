@@ -117,3 +117,42 @@ function handleSubmit(event) {
   event.target.reset();
   // reset() - даний метод очищає поля "input" після заповнення
 }
+
+form.addEventListener("submit", foo);
+// foo - функція передається як колбек тобто другим аргументом
+// foo ця функція отримає в себе об'єкт подій - (event)
+function foo(event) {}
+
+// ТИПИ ПОДІЙ
+// keypress, keydown, keyup - це якщо ми хочемо відслідковувати натискання клавіш
+// Ми вішаємо на наш документ один із слухачів подій - keypress, keydown, keyup
+
+document.addEventListener("keyup", handleKeyPress);
+// keypress - відслідковує натиснення клавіш але не спец клавіш типу Ctrl якщо їх натискати нічого не буде
+// keyup - працює тоді коли ми кнопку відпускаємо із спец клавіш типу Ctrl працює
+// keydown - буде працювати в той момент коли ми натискаємо клавіші
+function handleKeyPress(event) {
+  console.log(event.code);
+}
+
+// event - в нашому об'єкті подій коли спрацьовує keypress, keyup, keydown є дві влістивості
+// key та code
+//  console.log(event.key);
+// key - коли ми до неї звертаємось літери відображаються у нижньому рнгістрі але варто
+// натиснути спец клавішу Shift літери перемикаються у верхній рнгістр також враховує мову
+//  console.log(event.code);
+// code - ми отримуємо код наших клавіш ні з мовами ні з регістрами він не працює
+
+// Приклад хочемо відслідкувати коли корстувач натискає клавішу Ctrl
+
+document.addEventListener("keydown", handleKey);
+
+function handleKey(event) {
+  if (event.ctrlKey && event.code === "KeyC") {
+    console.log("ok");
+    // event.preventDefault();- він відключає дифолтну поведінку тобто в данному випадку копіювання
+    //   при комбінації клавіш ctr+C копіювання відбуватися не буде
+  }
+}
+
+// ТЕПЕР ЯКІ МАНІПУЛЯЦІЇ МОЖУТЬ БУТИ З МИШЕЮ

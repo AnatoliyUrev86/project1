@@ -279,7 +279,7 @@ titleEl.insertAdjacentHTML("beforeend", '<a href="">My title good</a>');
 // ДЛЯ СТВОРЕННЯ ТАБЛИЦІ ЗАПИТАТИ!!!!!
 // const transactoinHistory = [];
 // const tabelEl = document.querySelector(".js-transaction-tabel");
-// const markup = transactoinHistory.map((item) =>
+// return arr.map((item) =>
 //   (
 //     <tr>
 //       <td>${item.id}</td>
@@ -292,5 +292,5 @@ titleEl.insertAdjacentHTML("beforeend", '<a href="">My title good</a>');
 //     </tr>
 //   ).join("")
 // );
-
-// testEl.insertAdjacentHTML("beforeend", markup);
+// console.log(createMarkup(transactoinHistory));
+// testEl.insertAdjacentHTML("beforeend", createMarkup(transactoinHistory));
