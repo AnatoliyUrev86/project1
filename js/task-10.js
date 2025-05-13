@@ -220,13 +220,20 @@ const cars = [
   },
 ];
 
+// <select> - в данному тегові прописується відображається вибір ввести марку або модель авто
+// js-form - це ми звертаємось до класу нашої форми
 const form = document.querySelector(".js-form");
+// .js-list - це ми звертаємось до класу нашого спику даний клас стоїть в тегові <ul>
 const container = document.querySelector(".js-list");
 
+//  createMarkup - створюємо функцію в яку ми будемо приймати наш список авто як параметр arr
 function createMarkup(arr) {
-  return arr
-    .map(
-      (car) => `
+  return (
+    arr
+      // map - за допомогою методу мап будемо перебирати наш масив
+      // із стрілочною фугкцією ми будемо використовувати шаблонні рядки
+      .map(
+        (car) => `
             <li class="car-card" data-id="${car.id}">
             <img src="${car.img}" alt="${car.type}" class="car-image">
             <h2 class="car-title">${car.car}</h2>
@@ -234,27 +241,57 @@ function createMarkup(arr) {
             <span class="car-price">${car.price}</span>
             </li>
             `
-    )
-    .join("");
+        // Тут ми робимо розмітку за допомогою рядків
+      )
+      .join("")
+    // .join("") - метод потрібен щоб перетворити масив у рядок і потім використати метод insertAdjacentHTML
+  );
 }
 // console.log(createMarkup(cars));
 
 container.style.display = "flex";
 container.style.flexWrap = "wrap";
 container.style.gap = "25px";
-
+// Метод insertAdjacentHTML beforeend - після нашого елементу та
+// як другий аргумент createMarkup(cars) - буде результат виконання нашої функції з значеннями її елементів cars
+// Тепер як результат відображається список наших авто на сторінці
 container.insertAdjacentHTML("beforeend", createMarkup(cars));
 
+// name="query" - це по факту буде рядок пошуку в який користувач буде вводити марку або модель авто
+// під час пошуку
+// <select> - це випадаюче меню де користувач під час пошуку може обрати марку або модель авто
+// на основі чого він буде вести пошук
+// <option> - в данному тегові прописуються варіанти які будуть відображатися у вспливаючому вікні
+// тобто марка і модель окремо прописується в цьому тегові і їх стільки може бути в залежносі на
+// скільки широкий буде критерій пошуку
+
 form.addEventListener("submit", handleSubmit);
+// "submit" - подія яка виконується і посилання на функцію  handleSubmit яка буде виконувати
 function handleSubmit(event) {
+  // event - об'єкт події який у функцію handleSubmit передається як параметр під час виклику
   event.preventDefault();
+  //  event.preventDefault() - відключить дефолтне оновлення сторінки під час відправки даних на пошук
   //   console.dir(event.target);
   const elements = event.target.elements;
   //   console.log(elements);
   const query = elements.query;
+  // Тут ми звертаємось до query щоб отримати його значення і тому пишемо elements.query.vaiue
   // console.log(elements.query.vaiue);
-  const result = cars.filter((item) =>
-    item[option.value].toLowerCase().includes(query.value.toLowerCase())
+  // <option value="car">Марка</option>
+  // <option value="type">Модель</option>
+  // В залежності від того що буде обрано у вспливаючому вікні Марка чи Модель з того тегу <option>
+  // value - значення під час результату пошуку наш користувач отримає
+
+  const result = cars.filter(
+    (item) =>
+      item[option.value].toLowerCase().includes(query.value.toLowerCase())
+    //   item - об'єкт нашого масиву ми у ньому хочемо знайти властивіть не знаємо яку але знаємо що вона
+    // зберігається в option.value і тому ми пишемо наступне:
+    //   об'єкт - item квадратні дужки option.value - звертаємось туди де зберігається наше значення
+    //   toLowerCase() - приводить рядок до нижньго регістру
+    //   includes- включає в себе тобто інклудс перевіряє наявнсть того що йому передається в круглі дужки
+    //   в даному випадку це буде query.value - це те що вводить користувач під час пошуку в
+    //   нижньому регістрі toLowerCase() і загалом це виглядає .includes(query.value.toLowerCase()
   );
   console.log(result);
 }
