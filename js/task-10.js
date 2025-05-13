@@ -88,52 +88,52 @@ checkbox.addEventListener("change", () => {
 // ${name} - name - це буде значення імені яке введе користувач
 // }
 
-const form = document.querySelector(".js-form");
-form.addEventListener("submit", handleSubmit);
+// const form = document.querySelector(".js-form");
+// form.addEventListener("submit", handleSubmit);
 // Подія яка відбувається у form називається "submit"
-function handleSubmit(event) {
-  // Функція handleSubmit - яка буде відпрацьовувати при настанні події
-  // Коли іде відправка даних тобто подія "submit"  за замовчуванням сторінка
-  // перезавантажується - але так не має бути
-  event.preventDefault();
-  //В об'єкта події  event.викликається метод - preventDefault() - який прибирає дефолтне оновлення сторінки
-  // після відправки даних
-  //   console.log("submit");
-  console.dir(event.currentTarget.elements);
-  // currentTarget - данна властивість дає можливість побачити властивості наших елементів
-  console.log(elements.password.value);
-  // elements - тепер до наших елементів за ключами можна звертатися
-  // elements.password - через подію звертаємось до елемента password і у консолі отримуємо посилання на нього
-  // password.value - коли ми запишемо після password value - то будемо отримувати данні які вводить користувач
-  // Створюємо об'єкт в якому присвоюємо значення полів які буде вводити користувач
-  const info = {
-    // ключ  елемент пошта значення яке введе користувач - elements.email.value
-    email: elements.email.value,
-    password: elements.password.value,
-    comment: elements.comment.value,
-  };
-  console.log(info);
-  // Для того щоб форма очистилася після того як користувач заповнив і щоб міг заповнювати інший пишемо
-  event.target.reset();
-  // reset() - даний метод очищає поля "input" після заповнення
-}
+// function handleSubmit(event) {
+// Функція handleSubmit - яка буде відпрацьовувати при настанні події
+// Коли іде відправка даних тобто подія "submit"  за замовчуванням сторінка
+// перезавантажується - але так не має бути
+//   event.preventDefault();
+//В об'єкта події  event.викликається метод - preventDefault() - який прибирає дефолтне оновлення сторінки
+// після відправки даних
+//   console.log("submit");
+//   console.dir(event.currentTarget.elements);
+// currentTarget - данна властивість дає можливість побачити властивості наших елементів
+//   console.log(elements.password.value);
+// elements - тепер до наших елементів за ключами можна звертатися
+// elements.password - через подію звертаємось до елемента password і у консолі отримуємо посилання на нього
+// password.value - коли ми запишемо після password value - то будемо отримувати данні які вводить користувач
+// Створюємо об'єкт в якому присвоюємо значення полів які буде вводити користувач
+// const info = {
+// ключ  елемент пошта значення яке введе користувач - elements.email.value
+//   email: elements.email.value,
+//   password: elements.password.value,
+//   comment: elements.comment.value,
+// };
+// console.log(info);
+// Для того щоб форма очистилася після того як користувач заповнив і щоб міг заповнювати інший пишемо
+// event.target.reset();
+// reset() - даний метод очищає поля "input" після заповнення
+// }
 
-form.addEventListener("submit", foo);
+// form.addEventListener("submit", foo);
 // foo - функція передається як колбек тобто другим аргументом
 // foo ця функція отримає в себе об'єкт подій - (event)
-function foo(event) {}
+// function foo(event) {}
 
 // ТИПИ ПОДІЙ
 // keypress, keydown, keyup - це якщо ми хочемо відслідковувати натискання клавіш
 // Ми вішаємо на наш документ один із слухачів подій - keypress, keydown, keyup
 
-document.addEventListener("keyup", handleKeyPress);
+// document.addEventListener("keyup", handleKeyPress);
 // keypress - відслідковує натиснення клавіш але не спец клавіш типу Ctrl якщо їх натискати нічого не буде
 // keyup - працює тоді коли ми кнопку відпускаємо із спец клавіш типу Ctrl працює
 // keydown - буде працювати в той момент коли ми натискаємо клавіші
-function handleKeyPress(event) {
-  console.log(event.code);
-}
+// function handleKeyPress(event) {
+//   console.log(event.code);
+// }
 
 // event - в нашому об'єкті подій коли спрацьовує keypress, keyup, keydown є дві влістивості
 // key та code
@@ -145,19 +145,19 @@ function handleKeyPress(event) {
 
 // Приклад хочемо відслідкувати коли корстувач натискає клавішу Ctrl
 
-document.addEventListener("keydown", handleKey);
+// document.addEventListener("keydown", handleKey);
 
-function handleKey(event) {
-  if (event.ctrlKey && event.code === "KeyC") {
-    console.log("ok");
-    // event.preventDefault();- він відключає дифолтну поведінку тобто в данному випадку копіювання
-    //   при комбінації клавіш ctr+C копіювання відбуватися не буде
-  }
-}
+// function handleKey(event) {
+//   if (event.ctrlKey && event.code === "KeyC") {
+//     console.log("ok");
+// event.preventDefault();- він відключає дифолтну поведінку тобто в данному випадку копіювання
+//   при комбінації клавіш ctr+C копіювання відбуватися не буде
+//   }
+// }
 
 // ТЕПЕР ЯКІ МАНІПУЛЯЦІЇ МОЖУТЬ БУТИ З МИШЕЮ
 
-const boxEl = document.querySelector(".js-box");
+// const boxEl = document.querySelector(".js-box");
 //                                   посилання на функцію як другий аргумент
 // boxEl.addEventListener("mouseenter", onMouseEnter);
 //                                   посилання на функцію як другий аргумент
@@ -196,3 +196,51 @@ const boxEl = document.querySelector(".js-box");
 //   console.log(event);
 // }
 
+const cars = [
+  {
+    id: 1,
+    car: "Audi",
+    type: "A6",
+    price: 30000,
+    img: "https://media.istockphoto.com/id/459014029/ru/%D1%84%D0%BE%D1%82%D0%BE/%D0%B1%D0%B5%D0%BB%D1%8B%D0%B9-audi-a6-%D1%87%D0%B0%D1%80%D0%BB%D1%8C%D1%81%D1%82%D0%BE%D0%BD-%D1%81%D1%88%D0%B0.jpg?s=612x612&w=0&k=20&c=3pyF2PeTFIEBSbKjgQk66rEmDWytbH2rshBwBBFtK9Q=",
+  },
+  {
+    id: 2,
+    car: "Bmw",
+    type: "X5",
+    price: 40000,
+    img: "https://baza-gai.com.ua/catalog-images/bmw/x5/model.jpg",
+  },
+  {
+    id: 3,
+    car: "Subaru",
+    type: "B9",
+    price: 50000,
+    img: "https://cdn3.riastatic.com/photosnew/auto/photo/subaru_tribeca__597365583fx.jpg",
+  },
+];
+
+const form = document.querySelector(".js-form");
+const container = document.querySelector(".js-list");
+
+function createMarkup(arr) {
+  return arr
+    .map(
+      (car) => `
+            <li class="car-card" data-id="${car.id}">
+            <img src="${car.img}" alt="${car.type}" class="car-image">
+            <h2 class="car-title">${car.car}</h2>
+            <h3 class="car-type">${car.type}</h3>
+            <span class="car-price">${car.price}</span>
+            </li>
+            `
+    )
+    .join("");
+}
+// console.log(createMarkup(cars));
+
+container.style.display = "flex";
+container.style.flexWrap = "wrap";
+container.style.gap = "25px";
+
+container.insertAdjacentHTML("beforeend", createMarkup(cars));
