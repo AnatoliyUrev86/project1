@@ -244,3 +244,17 @@ container.style.flexWrap = "wrap";
 container.style.gap = "25px";
 
 container.insertAdjacentHTML("beforeend", createMarkup(cars));
+
+form.addEventListener("submit", handleSubmit);
+function handleSubmit(event) {
+  event.preventDefault();
+  //   console.dir(event.target);
+  const elements = event.target.elements;
+  //   console.log(elements);
+  const query = elements.query;
+  // console.log(elements.query.vaiue);
+  const result = cars.filter((item) =>
+    item[option.value].toLowerCase().includes(query.value.toLowerCase())
+  );
+  console.log(result);
+}
