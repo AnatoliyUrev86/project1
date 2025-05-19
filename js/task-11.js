@@ -80,12 +80,86 @@ function onInnerChildClick(event) {
 
 // ПРИ ДЕЛЕГУВАННІ ПОДІЙ МИ МОЖЕМО НАВІШУВАТИ ЛИШЕ ОДИН ОБРОБНИК ПОДІЙ НА БАТЬКІВСИЙ ЕЛЕМЕНЬ "container"
 
-const container = document.querySelector(".container");
-container.addEventListener("click", handleClick);
+// const container = document.querySelector(".container");
+// container.addEventListener("click", handleClick);
 // Тут ми відразу на наш батьківський елемент container навішуємо наш слухач подій addEventListener
 
+// function handleClick(event) {
+//   if (!event.target.classList.contains("box")) {
+//   contains("box") - контейс перевіряє чи є у елемента клас в даному випадку клас "box"
+//contains - цей метод повертає true або false
+// return;
+//   }
+//   const color = event.target.dataset.color;
+// Це ми пишемо для того щоб при кліку на наш елемент відображався його колір
+//   console.log(color);
+// }
+
+const products = [
+  {
+    id: 1,
+    img: "https://velotime.com.ua/image/cache/catalog/image/cache/catalog/products/793/22239-570x346.webp",
+    price: 3000,
+    name: "bicycle",
+    descriptoin: "23-inch monitor",
+  },
+  {
+    id: 2,
+    img: "https://ifranko.ua/wp-content/uploads/2024/09/img_9062.jpg",
+    price: 5000,
+    name: "phone",
+    descriptoin: "23-inch monitor full HD",
+  },
+];
+
+const container = document.querySelector(".products");
+container.insertAdjacentHTML("beforeend", createMarkup(products));
+container.addEventListener("click", handleClick);
+
+function createMarkup(arr) {
+  return arr
+    .map(
+      (product) => `
+        <li class="item product-item" <data id="${product.id}">
+        <img src="${product.img}" alt="${product.name} width="300">
+        <h2 ${product.name}></h2>
+        <p>Ціна: ${product.price} грн</p>
+        </li> `
+    )
+    .join("");
+}
+
 function handleClick(event) {
-  if (!event.target.classList.contains("box")) {
+  // Тут ми порівнюємо елемент на який ми клікаємо  event.target та елемент на якому весить
+  // слухач події container тобто event.currentTarget це те саме тоді бери і припиняй виконання функції return;
+  if (event.target === event.currentTarget) {
+    // event.target - елемент на який ми клікаємо
+    // event.currentTarget - елемент на якому весить слухач події container
     return;
   }
+  // Для того щоб прибрати натискання користувача які він може зробити
+  // на картинці на заголовку або ще десь пишемо нижче
+  const currentProduct = event.target.closest(".product-item");
+  // Створюємо змінну куди ми будемо зберігати наш результат
+  // event.target - елемент на який може клікнути користувач
+  // closest()- цей метод приймає селектор найближчого батьківського елемента product-item який ми хочемо знайти
+  // він знайде батьківський елемент product-item до event.target
+  // І поверне його у змінну currentProduct
+  // Для того щоб витягнути значення id - щоб розуміти на який саме товар натиснув користувач
+  const id = currentProduct.dataset.id;
+  // Ми створюємо змінну id і присвоюємо значення нашої змінної currentProduct і
+  // dataset - дає нам значення в данному випадку id
+  console.log(id);
+  console.log(currentProduct);
+  // Тепер нам потрібно знайти той самий елемент по id якого клікнув користувач для цього використаємо метод
+  const product = products.find((item) => item.id === +id);
+  // (item) - відповідає за елементи нашого масиву
+  // Ми з елемента масиву хщчемо взяти його айді  item.id та порівняти із тим id - який ми
+  //  витягнути із dataset.id
+  // item.id === +id
+  // +id - ставимо плюс перед айді щоб перетворити наш рядок на чило тому що якщо цьго не зробити
+  // буде при натисканні undefined
+  console.log(products);
 }
+
+// ДАЛІ ПОТРІБНО СТВОРИТИ МОДАЛЬНЕ ВІКНО ЩОБ ВОНО ВСПЛИВАЛО
