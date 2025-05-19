@@ -14,9 +14,8 @@ innerChild.addEventListener("click", onInnerChildClick);
 innerChild.addEventListener("click", clickEl);
 
 function clickEl() {
-    console.log("clickEl");
+  console.log("clickEl");
 }
-
 
 function onParentClick(event) {
   // У консолі при виклику ми будемо отримувати рядки із назвою функцій "onParentClick"
@@ -39,14 +38,14 @@ function onChildClick(event) {
   // а два інших закоментували
 }
 function onInnerChildClick(event) {
-    event.stopImmendiatePropagation();
+  event.stopImmendiatePropagation();
   // У консолі при виклику ми будемо отримувати рядки із назвою функцій "onInnerChildClick"
   //   Оскільки це у нас колбек фунції то вони приймають в себе об'єкт подій - event
   // Якщо ми у фунції пропишемо stopImmendiatePropagation то функція clickEl яка підключена
   // як другий аргумент до слухача подій innerChild.addEventListener("click", clickEl)
-  // при кліку на innerChild працювати не буде 
- 
-    event.stopPropagatoin();
+  // при кліку на innerChild працювати не буде
+
+  event.stopPropagatoin();
   //  event.stopPropagatoin() - це забороняє вспливанню інших подій крім цієї в якій ми прописали
   // Тобто ящо на інших не прописати event.stopPropagatoin() в них все беде вспливати як раніше
   console.log("onInnerChildClick target", event.target);
@@ -63,3 +62,30 @@ function onInnerChildClick(event) {
 // Це буде означати наступне якщо ми клікаємо на наш дочірній елемент innerChild то подія
 // відбувається тільки на ньому а на батьківському parent нічого не відбудеться
 // Для цьго в нашого event - об'єкта подій є властивість stopPropagatoin()
+
+// Задача
+// Де потрібно дістати кольори із трьох квадратів
+// const container = document.querySelector(".container");
+// box.addEventListener("click", handleClick);
+// function handleClick(event) {
+// Щоб дістати data-color="red" - дата атрибут в яких зберігається колір потрібно
+//   const color = event.currentTarget.dataset.color;
+// event - об'єкт події
+// currentTarget -  ми отримаємо посилання на елемент на якому висить слухач нашої події addEventListener
+// dataset - данна властивість використовується щоб дістати значення кольору із data-color="red"
+// color - буде отримувати зазначений колір
+//   console.log(color);
+// }
+// Тепер при натисканні на квадрати будуть відображатися кольори які в них є
+
+// ПРИ ДЕЛЕГУВАННІ ПОДІЙ МИ МОЖЕМО НАВІШУВАТИ ЛИШЕ ОДИН ОБРОБНИК ПОДІЙ НА БАТЬКІВСИЙ ЕЛЕМЕНЬ "container"
+
+const container = document.querySelector(".container");
+container.addEventListener("click", handleClick);
+// Тут ми відразу на наш батьківський елемент container навішуємо наш слухач подій addEventListener
+
+function handleClick(event) {
+  if (!event.target.classList.contains("box")) {
+    return;
+  }
+}

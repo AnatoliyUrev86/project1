@@ -286,3 +286,24 @@ margin-left: auto;
         background-color: #ffc107;
         border: #02897a;
 }
+
+.container {
+    display: flex;
+        justify-content: space-between;
+        align-items: center;
+}
+
+.box-red {width: 100px;
+    height: 100px;
+    border-color: #f03e3d;
+}
+
+.box-black {width: 100px;
+    height: 100px;
+    border-color: #22343d;
+}
+
+.box-green {width: 100px;
+    height: 100px;
+    border-color: aqua;
+}
