@@ -98,14 +98,14 @@ function onInnerChildClick(event) {
 const products = [
   {
     id: 1,
-    img: "https://velotime.com.ua/image/cache/catalog/image/cache/catalog/products/793/22239-570x346.webp",
+    img: "https://media.istockphoto.com/id/459014029/ru/%D1%84%D0%BE%D1%82%D0%BE/%D0%B1%D0%B5%D0%BB%D1%8B%D0%B9-audi-a6-%D1%87%D0%B0%D1%80%D0%BB%D1%8C%D1%81%D1%82%D0%BE%D0%BD-%D1%81%D1%88%D0%B0.jpg?s=612x612&w=0&k=20&c=3pyF2PeTFIEBSbKjgQk66rEmDWytbH2rshBwBBFtK9Q=",
     price: 3000,
     name: "bicycle",
     descriptoin: "23-inch monitor",
   },
   {
     id: 2,
-    img: "https://ifranko.ua/wp-content/uploads/2024/09/img_9062.jpg",
+    img: "https://baza-gai.com.ua/catalog-images/bmw/x5/model.jpg",
     price: 5000,
     name: "phone",
     descriptoin: "23-inch monitor full HD",
@@ -160,6 +160,24 @@ function handleClick(event) {
   // +id - ставимо плюс перед айді щоб перетворити наш рядок на чило тому що якщо цьго не зробити
   // буде при натисканні undefined
   console.log(products);
-}
+  // ДАЛІ ПОТРІБНО СТВОРИТИ МОДАЛЬНЕ ВІКНО ЩОБ ВОНО ВСПЛИВАЛО
+  // Через  CDN переходимо за посиланням https://cdnjs.com/libraries/basicLightbox/5.0.0 копіюємо
+  // два посилання і підключаємо
+  //https://cdnjs.cloudflare.com/ajax/libs/basicLightbox/5.0.0/basicLightbox.min.css підключається вище боді
+  // в тег <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/basicLightbox/5.0.0/basicLightbox.min.css">
+  //https://cdnjs.cloudflare.com/ajax/libs/basicLightbox/5.0.0/basicLightbox.min.css
+  // піключається вище файлу js до якого ми будемо застосовувати
+  //  <script src="https://cdnjs.cloudflare.com/ajax/libs/basicLightbox/5.0.0/basicLightbox.min.js"></script>
 
-// ДАЛІ ПОТРІБНО СТВОРИТИ МОДАЛЬНЕ ВІКНО ЩОБ ВОНО ВСПЛИВАЛО
+  const instance = basicLightbox.create(`
+        <div class="modal">
+        <img src="${product.img}"alt="${product.name}">
+         <h2 ${product.name}></h2>
+         <h3>${product.price} грн</h3>
+         <p>${product.descriptoin}</p>
+        </div>`);
+  instance.show();
+  // instance.show() - тут ми звертаємось до нашого модального вікна і додаємо метод .show()
+  // яке при натисканні на наш товар буде вспливати вікно із цією позицією а остальні буде перекривати
+  // тому що це модальне вікно
+}
