@@ -47,20 +47,73 @@
 // console.log(obj);
 
 // Це приклад Глибокої Деструктуризації тому що в об'єкт user вкладено об'єкт  skills
+// const user = {
+//   username: "Alise",
+//   age: 25,
+//   skills: {
+//     html: true,
+//     css: true,
+//     js: false,
+//   },
+// };
+// Виконання Глибокої Деструктуризації
+// const {
+//   skills: { html, css, js },
+// } = user;
+// Ми деструктуризуємо наш об'єкт  skills: { html, css, js } ставимо після нього дві крапки фігурні дужки
+// та деструктуризуємо його ще раз вписуємо в дужки його значення { html, css, js }
+// console.log(css);
+// Під час виклику css ми у консолі будемо отримувати значення true яке має css і так по всіх властивостях
+
 const user = {
-  username: "Alise",
-  age: 25,
+  username: "Kate",
   skills: {
     html: true,
     css: true,
     js: false,
   },
 };
-// Виконання Глибокої Деструктуризації
-const {
-  skills: { html, css, js },
-} = user;
-// Ми деструктуризуємо наш об'єкт  skills: { html, css, js } ставимо після нього дві крапки фігурні дужки
-// та деструктуризуємо його ще раз вписуємо в дужки його значення { html, css, js }
-console.log(css);
-// Під час виклику css ми у консолі будемо отримувати значення true яке має css і так по всіх властивостях
+
+// Без деструктуризації
+// function getInfo(obj) {
+//   console.log(
+//     `Hello my name is ${obj.username}, I know html -  ${obj.skills.html} ,
+//     css -  ${obj.skills.css} and js - ${obj.skills.js} `
+//   );
+// }
+
+// getInfo(user);
+
+// З деструктуризацією передається як параметр під час створення функції
+
+// function getInfo({ username, skills: { html, css, js } }) {
+//   console.log(
+//     `Hello my name is ${username}, I know html -  ${html} , css -  ${css} and js - ${js} `
+//   );
+// }
+
+// getInfo(user);
+
+// ДИСТРУКТУРИЗАЦІЯ В ЦИКЛІ
+
+const users = [{ name: "Kate" }, { name: "Alise" }, { name: "Petya" }];
+
+// Без деструктуризації
+
+// const names = [];
+
+// for (const user of users) {
+//   names.push(user.name);
+// }
+
+// console.log(names);
+
+// З деструктуризацією
+
+const names = [];
+
+for (const { name } of users) {
+  names.push(name);
+}
+
+console.log(names);
