@@ -2,49 +2,49 @@
 /* <button class="js-click">Click me</button> */
 /* <div class="js-box box"></div> */
 // Звертаємось до                 класу кнопки
-const btn = document.querySelector(".js-click");
+// const btn = document.querySelector(".js-click");
 // .querySelector(".js-click") - тут зберігається посилання на наш елемент
 // Звертаємось до                   класу div
-const box = document.querySelector(".js-box");
+// const box = document.querySelector(".js-box");
 // Для того щрб мати можливість взаємодіяти з нашою кнопкою тиснути і щоб відбувалась якась дія
 // btn.addEventListener("click") - ми цей метод викликаємо на тому елементі на якому хочемо
 // відслідковувати події в даному випадку на кнопці btn
 // btn.addEventListener("click", () => {
 // 1-й аргумент це дія яку ми хочемо побачити "click"
 // 2-й аргумент це колбек або стрілочна фунція () => яка буде виконуватись при натисканні на кнопку
-console.log("ok");
+// console.log("ok");
 // });
 // Замість () => ми передаємо посилання на звнішню фунцію handleClick - як 2-й аргумент
-btn.addEventListener("click", handleClick);
-box.addEventListener("click", handleClick);
+// btn.addEventListener("click", handleClick);
+// box.addEventListener("click", handleClick);
 // Також можемо створити зовнішю функцію
 // Тепер ми хочемо щоб при натисканні на кнопку значення числове збільшувалось на 50 для цього
-let step = 0;
+// let step = 0;
 // Створюємо змінну якій присвоюємо початкове значення let step = 0;
-function handleClick() {
-  //   console.log("ok");
-  // В середині нашої функції звертаємось до нашої змінної і кажемо збільшуй значення після
-  // натискання на 50 тобто  step += 50;
-  step += 50;
-  //   console.log(step);
-  // Тепер ми хочемо щоб при натисканні на кнопку наша кнопка рухалась
-  box.style.marginTop = `${step}px`;
-  // Звертаємось до нашого  box крапка властивість style потім marginTop - рухатись в верх
-  // Задаємо значення через шаблонні рядки  `${step}px` звертаючись до  step += 50 за фігуні дужки px
-  box.style.marginLeft = `${step}px`;
-}
+// function handleClick() {
+//   console.log("ok");
+// В середині нашої функції звертаємось до нашої змінної і кажемо збільшуй значення після
+// натискання на 50 тобто  step += 50;
+// step += 50;
+//   console.log(step);
+// Тепер ми хочемо щоб при натисканні на кнопку наша кнопка рухалась
+// box.style.marginTop = `${step}px`;
+// Звертаємось до нашого  box крапка властивість style потім marginTop - рухатись в верх
+// Задаємо значення через шаблонні рядки  `${step}px` звертаючись до  step += 50 за фігуні дужки px
+// box.style.marginLeft = `${step}px`;
+// }
 
 // РОБОТА З <input>
 
-const checkbox = document.querySelector(".js-checkbox");
+// const checkbox = document.querySelector(".js-checkbox");
 // checkbox - це маленький квадратик який біля нашого рядка <input> на який ми ставимо галочку і у консолі
 // буде відображатись "ok"- значення яке присвоїли
 // Тут ми звертаємось до checkbox і викликаємо подію яка нам потрібна
 // Коли ми тиснемо на checkbox відпрацьовує подія "change"
-checkbox.addEventListener("change", () => {
-  // () => - стрілочна функція буде відпрацьовувати в момент натискання на checkbox
-  console.log("ok");
-});
+// checkbox.addEventListener("change", () => {
+// () => - стрілочна функція буде відпрацьовувати в момент натискання на checkbox
+//   console.log("ok");
+// });
 
 // Тут ми звертаємось до класу нашого <input> js-user-mane
 //                                       В дужках передається посилання на наш об'єкт
@@ -196,66 +196,66 @@ checkbox.addEventListener("change", () => {
 //   console.log(event);
 // }
 
-const cars = [
-  {
-    id: 1,
-    car: "Audi",
-    type: "A6",
-    price: 30000,
-    img: "https://media.istockphoto.com/id/459014029/ru/%D1%84%D0%BE%D1%82%D0%BE/%D0%B1%D0%B5%D0%BB%D1%8B%D0%B9-audi-a6-%D1%87%D0%B0%D1%80%D0%BB%D1%8C%D1%81%D1%82%D0%BE%D0%BD-%D1%81%D1%88%D0%B0.jpg?s=612x612&w=0&k=20&c=3pyF2PeTFIEBSbKjgQk66rEmDWytbH2rshBwBBFtK9Q=",
-  },
-  {
-    id: 2,
-    car: "Bmw",
-    type: "X5",
-    price: 40000,
-    img: "https://baza-gai.com.ua/catalog-images/bmw/x5/model.jpg",
-  },
-  {
-    id: 3,
-    car: "Subaru",
-    type: "B9",
-    price: 50000,
-    img: "https://cdn3.riastatic.com/photosnew/auto/photo/subaru_tribeca__597365583fx.jpg",
-  },
-];
+// const cars = [
+//   {
+//     id: 1,
+//     car: "Audi",
+//     type: "A6",
+//     price: 30000,
+//     img: "https://media.istockphoto.com/id/459014029/ru/%D1%84%D0%BE%D1%82%D0%BE/%D0%B1%D0%B5%D0%BB%D1%8B%D0%B9-audi-a6-%D1%87%D0%B0%D1%80%D0%BB%D1%8C%D1%81%D1%82%D0%BE%D0%BD-%D1%81%D1%88%D0%B0.jpg?s=612x612&w=0&k=20&c=3pyF2PeTFIEBSbKjgQk66rEmDWytbH2rshBwBBFtK9Q=",
+//   },
+//   {
+//     id: 2,
+//     car: "Bmw",
+//     type: "X5",
+//     price: 40000,
+//     img: "https://baza-gai.com.ua/catalog-images/bmw/x5/model.jpg",
+//   },
+//   {
+//     id: 3,
+//     car: "Subaru",
+//     type: "B9",
+//     price: 50000,
+//     img: "https://cdn3.riastatic.com/photosnew/auto/photo/subaru_tribeca__597365583fx.jpg",
+//   },
+// ];
 
 // <select> - в данному тегові прописується відображається вибір ввести марку або модель авто
 // js-form - це ми звертаємось до класу нашої форми
-const form = document.querySelector(".js-form");
+// const form = document.querySelector(".js-form");
 // .js-list - це ми звертаємось до класу нашого спику даний клас стоїть в тегові <ul>
-const container = document.querySelector(".js-list");
+// const container = document.querySelector(".js-list");
 
 //  createMarkup - створюємо функцію в яку ми будемо приймати наш список авто як параметр arr
-function createMarkup(arr) {
-  return (
-    arr
-      // map - за допомогою методу мап будемо перебирати наш масив
-      // із стрілочною фугкцією ми будемо використовувати шаблонні рядки
-      .map(
-        (car) => `
-            <li class="car-card" data-id="${car.id}">
-            <img src="${car.img}" alt="${car.type}" class="car-image">
-            <h2 class="car-title">${car.car}</h2>
-            <h3 class="car-type">${car.type}</h3>
-            <span class="car-price">${car.price}</span>
-            </li>
-            `
-        // Тут ми робимо розмітку за допомогою рядків
-      )
-      .join("")
-    // .join("") - метод потрібен щоб перетворити масив у рядок і потім використати метод insertAdjacentHTML
-  );
-}
+// function createMarkup(arr) {
+//   return (
+//     arr
+// map - за допомогою методу мап будемо перебирати наш масив
+// із стрілочною фугкцією ми будемо використовувати шаблонні рядки
+// .map(
+//   (car) => `
+//       <li class="car-card" data-id="${car.id}">
+//       <img src="${car.img}" alt="${car.type}" class="car-image">
+//       <h2 class="car-title">${car.car}</h2>
+//       <h3 class="car-type">${car.type}</h3>
+//       <span class="car-price">${car.price}</span>
+//       </li>
+//       `
+// Тут ми робимо розмітку за допомогою рядків
+// )
+// .join("")
+// .join("") - метод потрібен щоб перетворити масив у рядок і потім використати метод insertAdjacentHTML
+// );
+// }
 // console.log(createMarkup(cars));
 
-container.style.display = "flex";
-container.style.flexWrap = "wrap";
-container.style.gap = "25px";
+// container.style.display = "flex";
+// container.style.flexWrap = "wrap";
+// container.style.gap = "25px";
 // Метод insertAdjacentHTML beforeend - після нашого елементу та
 // як другий аргумент createMarkup(cars) - буде результат виконання нашої функції з значеннями її елементів cars
 // Тепер як результат відображається список наших авто на сторінці
-container.insertAdjacentHTML("beforeend", createMarkup(cars));
+// container.insertAdjacentHTML("beforeend", createMarkup(cars));
 
 // name="query" - це по факту буде рядок пошуку в який користувач буде вводити марку або модель авто
 // під час пошуку
@@ -265,33 +265,33 @@ container.insertAdjacentHTML("beforeend", createMarkup(cars));
 // тобто марка і модель окремо прописується в цьому тегові і їх стільки може бути в залежносі на
 // скільки широкий буде критерій пошуку
 
-form.addEventListener("submit", handleSubmit);
+// form.addEventListener("submit", handleSubmit);
 // "submit" - подія яка виконується і посилання на функцію  handleSubmit яка буде виконувати
-function handleSubmit(event) {
-  // event - об'єкт події який у функцію handleSubmit передається як параметр під час виклику
-  event.preventDefault();
-  //  event.preventDefault() - відключить дефолтне оновлення сторінки під час відправки даних на пошук
-  //   console.dir(event.target);
-  const elements = event.target.elements;
-  //   console.log(elements);
-  const query = elements.query;
-  // Тут ми звертаємось до query щоб отримати його значення і тому пишемо elements.query.vaiue
-  // console.log(elements.query.vaiue);
-  // <option value="car">Марка</option>
-  // <option value="type">Модель</option>
-  // В залежності від того що буде обрано у вспливаючому вікні Марка чи Модель з того тегу <option>
-  // value - значення під час результату пошуку наш користувач отримає
+// function handleSubmit(event) {
+// event - об'єкт події який у функцію handleSubmit передається як параметр під час виклику
+// event.preventDefault();
+//  event.preventDefault() - відключить дефолтне оновлення сторінки під час відправки даних на пошук
+//   console.dir(event.target);
+// const elements = event.target.elements;
+//   console.log(elements);
+// const query = elements.query;
+// Тут ми звертаємось до query щоб отримати його значення і тому пишемо elements.query.vaiue
+// console.log(elements.query.vaiue);
+// <option value="car">Марка</option>
+// <option value="type">Модель</option>
+// В залежності від того що буде обрано у вспливаючому вікні Марка чи Модель з того тегу <option>
+// value - значення під час результату пошуку наш користувач отримає
 
-  const result = cars.filter(
-    (item) =>
-      item[option.value].toLowerCase().includes(query.value.toLowerCase())
-    //   item - об'єкт нашого масиву ми у ньому хочемо знайти властивіть не знаємо яку але знаємо що вона
-    // зберігається в option.value і тому ми пишемо наступне:
-    //   об'єкт - item квадратні дужки option.value - звертаємось туди де зберігається наше значення
-    //   toLowerCase() - приводить рядок до нижньго регістру
-    //   includes- включає в себе тобто інклудс перевіряє наявнсть того що йому передається в круглі дужки
-    //   в даному випадку це буде query.value - це те що вводить користувач під час пошуку в
-    //   нижньому регістрі toLowerCase() і загалом це виглядає .includes(query.value.toLowerCase()
-  );
-  console.log(result);
-}
+// const result = cars.filter(
+//   (item) =>
+//     item[option.value].toLowerCase().includes(query.value.toLowerCase())
+//   item - об'єкт нашого масиву ми у ньому хочемо знайти властивіть не знаємо яку але знаємо що вона
+// зберігається в option.value і тому ми пишемо наступне:
+//   об'єкт - item квадратні дужки option.value - звертаємось туди де зберігається наше значення
+//   toLowerCase() - приводить рядок до нижньго регістру
+//   includes- включає в себе тобто інклудс перевіряє наявнсть того що йому передається в круглі дужки
+//   в даному випадку це буде query.value - це те що вводить користувач під час пошуку в
+//   нижньому регістрі toLowerCase() і загалом це виглядає .includes(query.value.toLowerCase()
+//   );
+//   console.log(result);
+// }
