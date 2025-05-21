@@ -65,14 +65,14 @@
 // console.log(css);
 // Під час виклику css ми у консолі будемо отримувати значення true яке має css і так по всіх властивостях
 
-const user = {
-  username: "Kate",
-  skills: {
-    html: true,
-    css: true,
-    js: false,
-  },
-};
+// const user = {
+//   username: "Kate",
+//   skills: {
+//     html: true,
+//     css: true,
+//     js: false,
+//   },
+// };
 
 // Без деструктуризації
 // function getInfo(obj) {
@@ -96,7 +96,7 @@ const user = {
 
 // ДИСТРУКТУРИЗАЦІЯ В ЦИКЛІ
 
-const users = [{ name: "Kate" }, { name: "Alise" }, { name: "Petya" }];
+// const users = [{ name: "Kate" }, { name: "Alise" }, { name: "Petya" }];
 
 // Без деструктуризації
 
@@ -109,11 +109,42 @@ const users = [{ name: "Kate" }, { name: "Alise" }, { name: "Petya" }];
 // console.log(names);
 
 // З деструктуризацією
+// Створюємо пустий масив куди буде зберігатися результат
+// const names = [];
+// Через цикл for перебираємо наш масив users
+// for (const { name } of users) {
+// За допомогою методу .push додаємо наші імена name
+//   names.push(name);
+// }
 
-const names = [];
+// console.log(names);
 
-for (const { name } of users) {
-  names.push(name);
-}
+// ДЕСТРУКТУРИЗАЦІЯ В МЕТОДІ MAP
+// const users = [{ name: "Kate" }, { name: "Alise" }, { name: "Petya" }];
+// const names = users.map(({ name }) => name);
+// console.log(names);
+// (obj) - коли ми хочемо деструктуризувати наш об'єкт круглі дужки ми залишаємо
+// {name}) => name - в середині круглих дужок ставимо літерал об'єкт  {name} і в середину
+// передаємо властивість яка нам потрібна name і після фунції повертаємо її => name
 
-console.log(names);
+// Задача
+// Нам потрібно отримати username,  name,  surname
+const user = {
+  id: 1,
+  username: "harry_porter",
+  profile: {
+    name: "Harry",
+    surname: "Porter",
+    age: 25,
+  },
+};
+// Для цього ми
+// В фігурних дужках пишемо username потім звертаємось до об'єкта profile в якому є name, surname
+const {
+  username,
+  profile: { name, surname },
+} = user;
+
+console.log(`Ім'я користувача: ${name}`);
+console.log(`Прізвище користувача:${surname}`);
+console.log(`Ім'я користувача (за нікнеймом):${username}`);
