@@ -33,3 +33,16 @@ console.log(JSON.parse(value));
 // на рядок
 
 // ВИДАЛЕННЯ ДАНИХ ІЗ localStorage
+// localStorage.removeItem("Array of names");
+
+// В localStorage хочемо зберегти функцію
+// Функції та методи localStorage не зберігаються (thisa + thisb - це для приклду зберігання функцій та методів)
+
+const form = document.querySelector(".freedback-form");
+
+const textarea = document.querySelector("textarea");
+textarea.addEventListener("input", handalInput);
+function handalInput(event) {
+  console.log(event.target.value);
+  // event.target.value Щоб витягнути дані які ввів користувач
+}
