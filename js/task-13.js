@@ -18,4 +18,18 @@ const names = ["Alise", "Kate", "Emma"];
 // localStorage.setItem(LS_KEY, "lalala");
 // Звертаємось до localStorage
 // Далі метод setItem який приймає в круглі дужки два параметри (ключ, значення)
-localStorage.setItem(LS_KEY, names);
+// localStorage.setItem(LS_KEY, names);
+// Щоб отримати дані з нашого localStorage ми використовуємо метод getItem() - цей метод хоче в круглих дужках
+// тільки один аргумент назву ключа значення якого ми хочемо отримати LS_KEY
+const value = localStorage.getItem(LS_KEY);
+// Даний метод getItem витягає із localStorage - значення LS_KEY і отримуємо ми рядок
+// В результаті ми отримаємо в консолі рядок "Alise", "Kate", "Emma" хоча клали масив  ["Alise", "Kate", "Emma"]
+localStorage.setItem(LS_KEY, JSON.stringify(names));
+// JSON.stringify - перетворює наш масив names на рядок
+// Щоб наш рядок перетворити на валідний масив пишемо нижче console.log(JSON.parse(value));
+console.log(JSON.parse(value));
+// (value) - це будуть дані які ми витягнули із нашого localStorage і тепер ми наш рядок отримали у форматі масива
+// В localStorage - можуть зберігатися лише рядки тому ми за допомогою  JSON.stringify перетворювали наш масив
+// на рядок
+
+// ВИДАЛЕННЯ ДАНИХ ІЗ localStorage
