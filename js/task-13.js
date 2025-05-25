@@ -152,6 +152,22 @@ function handaleAdd(event) {
   const currentProduct = products.find(({ id }) => id === productId);
   console.log(currentProduct);
   const products = JSON.parse(localStorage.getItem(PRODUCT_LS) || []);
+  const index = products.findIndex(({ id }) => id === productId);
+
+  if (index !== -1) {
+    // Тут якщо елемент вже є в корзині ми звертаємось до корзини  products до його елемента
+    // за [index] додати властивість qty та збільшити його на одиницю += 1
+    products[index].qty += 1;
+  } else {
+    // Тут ми до нашого об'єкта  currentProduct додаємо властивість qty = 1 це коли його ще не має в корзині
+    // а значення ми йому 1 передали
+    currentProduct.qty = 1;
+    // Тут ми додаємо наш об'єкт currentProduct в корзину за неї відповідає products
+    products.push(currentProduct);
+  }
+  // Тепер ми повинні оновити наші дані в localStorage
+  localStorage.setItem(PRODUCT_LS, JSON.stringify(products));
+  // 1-ше значення ключ PRODUCT_LS  2-ге значення яе products яке ми презаписуємо в localStorage
 }
 // Тепер нам потрібно реалізувати наступне щоб при натисканні на кнопку наш товар додавався в корзину
 // Якщо елемент на якому відбувся клік має клас js-add він нас влаштовує якщо ні то ні
@@ -165,3 +181,10 @@ function handaleAdd(event) {
 // Далі ми звертаємось до localStorage і за домогою методу getItem знаходимо рядок PRODUCT_LS який перетворимо
 // у валідний масив
 // Потім поставили оператор АБО || якщо не знайдеш  [] - поверни порожній масив
+// Також потрібно реалізувати проставлення кількості однакових товарів
+
+// Для того щоб дізнатися чи є у елемента products елемент із  productId із таким Id
+// Для цьго створюємо змінну в яку це буде зберігатися
+// const index = products.findIndex(({ id }) => id === productId);
+// Якщо елемент  productId з таким Id в нашому масиві products метод findIndex поверне нам його index
+// якщо не має отримаємо -1
