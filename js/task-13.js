@@ -75,3 +75,16 @@ function populateTextAres() {
     // Якщо текст буде ми потрапимо в конструкцію if якщо ні то нічого не робимо
   }
 }
+
+// Щоб наша форма очищалась при відправці даних ми на неї вішаємо слухач подій та
+// (сабміт подія яка буде виконувати це та другий аргумент функція яка буде це виконувати)
+
+form.addEventListener("submit", handalSubmit);
+function handalSubmit(event) {
+  event.preventDefault();
+  // Для очищення форми після відправки даних пишемо
+  event.currentTarget.reset();
+  // Для очищення  localStorage  після відправки даних пишемо в дужки передаємо ключ за яким
+  // ми будемо видаляти дані STORAGE_KEY після відправки
+  localStorage.removeItem(STORAGE_KEY);
+}
