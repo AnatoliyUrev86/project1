@@ -93,24 +93,24 @@ function populateTextAres() {
 
 // В НАС Є ПЕРЕЛІК ТОВАРІВ ЯКІ МИ МОЖЕМО РПИ КУПІВЛІ ДОДАВАТИ В КОРЗИНУ І ПОТРІБНО РЕАЛІЗУВАТИ
 // ЩОБ ТОВАРИ ВІДОБРАЖАЛИСЯ В НАШІЙ КОРЗИНІ
-const products = [
-  {
-    id: 7,
-    img: "https://content.rozetka.com.ua/goods/images/big/468886611.jpg",
-    price: 50000,
-    description: "Айфон",
-  },
-  {
-    id: 8,
-    img: "https://content.rozetka.com.ua/goods/images/big/526514729.jpg",
-    price: 40000,
-    description: "Айпад",
-  },
-];
+// const products = [
+//   {
+//     id: 7,
+//     img: "https://content.rozetka.com.ua/goods/images/big/468886611.jpg",
+//     price: 50000,
+//     description: "Айфон",
+//   },
+//   {
+//     id: 8,
+//     img: "https://content.rozetka.com.ua/goods/images/big/526514729.jpg",
+//     price: 40000,
+//     description: "Айпад",
+//   },
+// ];
 
 const container = document.querySelector(".js-list");
 // Створюємо змінну куди будуть додаватися наші продукти в корзину
-const PRODUCT_LS = "basket";
+// const PRODUCT_LS = "basket";
 container.insertAdjacentHTML("beforeend", createMarkup(products));
 // Створимо функцію яка буде створювати рядок нашої розмітки
 
@@ -149,21 +149,21 @@ function handaleAdd(event) {
   // Тепер щоб витягнути значення id нам потрібно створити змінну в яку це буде зберігатися
   // з переду ставимо + щоб перетворити наш рядок на число
   const productId = +product.dataset.id;
-  const currentProduct = products.find(({ id }) => id === productId);
+  //   const currentProduct = products.find(({ id }) => id === productId);
   console.log(currentProduct);
-  const products = JSON.parse(localStorage.getItem(PRODUCT_LS) || []);
-  const index = products.findIndex(({ id }) => id === productId);
+  //   const products = JSON.parse(localStorage.getItem(PRODUCT_LS) || []);
+  //   const index = products.findIndex(({ id }) => id === productId);
 
   if (index !== -1) {
     // Тут якщо елемент вже є в корзині ми звертаємось до корзини  products до його елемента
     // за [index] додати властивість qty та збільшити його на одиницю += 1
-    products[index].qty += 1;
+    // products[index].qty += 1;
   } else {
     // Тут ми до нашого об'єкта  currentProduct додаємо властивість qty = 1 це коли його ще не має в корзині
     // а значення ми йому 1 передали
     currentProduct.qty = 1;
     // Тут ми додаємо наш об'єкт currentProduct в корзину за неї відповідає products
-    products.push(currentProduct);
+    // products.push(currentProduct);
   }
   // Тепер ми повинні оновити наші дані в localStorage
   localStorage.setItem(PRODUCT_LS, JSON.stringify(products));
@@ -188,3 +188,35 @@ function handaleAdd(event) {
 // const index = products.findIndex(({ id }) => id === productId);
 // Якщо елемент  productId з таким Id в нашому масиві products метод findIndex поверне нам його index
 // якщо не має отримаємо -1
+
+// ДЛЯ КОРЗИНИ З ТОВАРАМИ
+// ВАЖЛИВО ЦЕ РОБИТИ ОКРЕМИМ ФАЙЛОМ JS
+const totalPrice = document.querySelector(".js-total-price");
+const clear = document.querySelector(".js-clear");
+const containerEl = document.querySelector(".js-list");
+const PRODUCT_LS = "basket";
+
+// Для того щоб зрозуміти чи додали ми щось в корзину чи ні для цьго ми створемо змінну
+const products = JSON.parse(localStorage.getItem(PRODUCT_LS) || []);
+// Створюємо змінну в яку буде зберігатися сума наших покупок let totalCost
+let totalCost;
+// Щоб дізнатись чи порожня наша корзина чи ні потрібно звернутися до нашого масиву products
+// і записати властивість length
+if (products.length) {
+  // Звертаємось до кнопки яка має бути коли корзина пона щоб її очистити
+  clear.hidden = false;
+  // Далі ми хочемо порахувати загальну вартість моїх продуктів
+  totalCost = products.reduse((acc, { qty, price }) => (acc += qty * price), 0);
+  // acc += qty * price - це буде проміжне значення акумулятора яке буде зберігатися на наступну ітерацію
+}
+// Перевірка
+totalPrice.textContent = totalCost
+  ? `Total cost ${totalCost} грн `
+  : "Your basket is empty";
+// В нашу змінну totalPrice за допомогою textContent хочемо присвоїти рядок
+// В залежності від того що буде в козині якщо пуста Андефайдет
+// ? - для цьго використовуємо тернарний оператор потім Шаблонні рядки ``
+// Якщо є товар в корзині то `Total cost ${totalCost} грн ` потім двокрапка яка означає в іншому випадку
+//Тобто коли корзина пуста виведи рядок "Your basket is empty"
+
+// Для того щоб наповнити нашу корзину продуктами ми створемо функцію
