@@ -38,11 +38,40 @@ console.log(JSON.parse(value));
 // В localStorage хочемо зберегти функцію
 // Функції та методи localStorage не зберігаються (thisa + thisb - це для приклду зберігання функцій та методів)
 
-const form = document.querySelector(".freedback-form");
-
+// const form = document.querySelector(".freedback-form");
+const STORAGE_KEY = "feedback-msg";
+const form = document.querySelector(".feedback-form");
 const textarea = document.querySelector("textarea");
 textarea.addEventListener("input", handalInput);
 function handalInput(event) {
-  console.log(event.target.value);
+  const message = event.target.value;
+  populateTextAres();
   // event.target.value Щоб витягнути дані які ввів користувач
+  localStorage.setItem(STORAGE_KEY, message);
+  // Тут ми перезаписуємо наш localStorage за допомогою setItem і в дужках два аргументи
+  // 1-й STORAGE_KEY - куди перезаписуємо
+  // 2-й message що саме або з відки зміни повинні перезаписуватися message
+  console.log(message);
+}
+
+// Створимо функцію яка буде відображати текст на нашій сторінці який вводить користувач в message
+// вона буде повертати нам тест в localStorage в textarea якщо там буде текст
+
+function populateTextAres() {
+  // ДЛЯ ТОГО ЩОБ ВИТЯГНУТИ ДАНІ ІЗ  localStorage
+  // Створюємо змінну куди будемо зберігати результат
+  // Звертаємось до нашого localStorage і через метод setItem в дужках назву змінної STORAGE_KEY
+  // значення якої хочемо отримати
+  const savedMessage = localStorage.getItem(STORAGE_KEY);
+  console.log(savedMessage);
+  // Якщо наш textarea він же message будуть порожні у консолі буде - null і в цикл  if ми не потрапимо
+  // тому що null не має булевого значення
+  //Тепер що це перевірити ми звернемось до циклу  if і в круглі дужки передамо назву змінної яку хочемо
+  // перевірити savedMessage
+  if (savedMessage) {
+    textarea.value = savedMessage;
+    // Тут ми звертаємось до textarea та його значення value і присвоюємо значення змінної savedMessage
+    // куди буде зберігатися текст який вводить користувач в message
+    // Якщо текст буде ми потрапимо в конструкцію if якщо ні то нічого не робимо
+  }
 }
