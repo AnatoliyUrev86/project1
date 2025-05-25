@@ -79,12 +79,89 @@ function populateTextAres() {
 // Щоб наша форма очищалась при відправці даних ми на неї вішаємо слухач подій та
 // (сабміт подія яка буде виконувати це та другий аргумент функція яка буде це виконувати)
 
-form.addEventListener("submit", handalSubmit);
-function handalSubmit(event) {
-  event.preventDefault();
-  // Для очищення форми після відправки даних пишемо
-  event.currentTarget.reset();
-  // Для очищення  localStorage  після відправки даних пишемо в дужки передаємо ключ за яким
-  // ми будемо видаляти дані STORAGE_KEY після відправки
-  localStorage.removeItem(STORAGE_KEY);
+// form.addEventListener("submit", handalSubmit);
+// function handalSubmit(event) {
+//   event.preventDefault();
+// Для очищення форми після відправки даних пишемо
+//   event.currentTarget.reset();
+// Для очищення  localStorage  після відправки даних пишемо в дужки передаємо ключ за яким
+// ми будемо видаляти дані STORAGE_KEY після відправки
+//   localStorage.removeItem(STORAGE_KEY);
+// }
+
+// ЗФДАЧА
+
+// В НАС Є ПЕРЕЛІК ТОВАРІВ ЯКІ МИ МОЖЕМО РПИ КУПІВЛІ ДОДАВАТИ В КОРЗИНУ І ПОТРІБНО РЕАЛІЗУВАТИ
+// ЩОБ ТОВАРИ ВІДОБРАЖАЛИСЯ В НАШІЙ КОРЗИНІ
+const products = [
+  {
+    id: 7,
+    img: "https://content.rozetka.com.ua/goods/images/big/468886611.jpg",
+    price: 50000,
+    description: "Айфон",
+  },
+  {
+    id: 8,
+    img: "https://content.rozetka.com.ua/goods/images/big/526514729.jpg",
+    price: 40000,
+    description: "Айпад",
+  },
+];
+
+const container = document.querySelector(".js-list");
+// Створюємо змінну куди будуть додаватися наші продукти в корзину
+const PRODUCT_LS = "basket";
+container.insertAdjacentHTML("beforeend", createMarkup(products));
+// Створимо функцію яка буде створювати рядок нашої розмітки
+
+function createMarkup(arr) {
+  return (
+    arr
+      // В середині map робимо деструктуризацію нашого об'єкта
+      // передаючи в круглі дужки ключі значення яких ми хочемо отримати { id, img, price, description }
+      .map(
+        ({ id, img, price, description }) => `
+        <li data-id="${id}" class="product-card js-product">
+        <img src="${img}" alt="${name}"class="product-img">
+        <h2 class="product-title">${name}</h2>
+        <p class="product-description">${description}</p>
+        <p class="product-price">${price} грн</p>
+        <button class="product-add-btn js-add">Add to basket</button>
+        </li>`
+      )
+      .join("")
+  );
+  // Для того щоб розуміти по якому товару ми клікнули додаємо дата атрибут
+  // в якому буде зберігатися унікальний id
 }
+
+// Тепер потрібно коли ми товари наші бачимо на сторінці реалізувати додавання їх в корзину
+// Тут ми скористаємось делегуванням і слухач події навісимо на наш container
+// container.addEventListener("click", handaleAdd);
+// Тепер створимо функцію handaleAdd яка буде додавати товар у корзину
+container.addEventListener("click", handaleAdd);
+function handaleAdd(event) {
+  if (!event.target.classList.contains("js-add")) {
+    return;
+  }
+  const product = event.target.closest(".js-product");
+  console.log(product);
+  // Тепер щоб витягнути значення id нам потрібно створити змінну в яку це буде зберігатися
+  // з переду ставимо + щоб перетворити наш рядок на число
+  const productId = +product.dataset.id;
+  const currentProduct = products.find(({ id }) => id === productId);
+  console.log(currentProduct);
+  const products = JSON.parse(localStorage.getItem(PRODUCT_LS) || []);
+}
+// Тепер нам потрібно реалізувати наступне щоб при натисканні на кнопку наш товар додавався в корзину
+// Якщо елемент на якому відбувся клік має клас js-add він нас влаштовує якщо ні то ні
+// !event.target.classList.contains("js-add")
+// Тут ми кажемо що при натисканні знайди елемент із класом js-product тобто наш список  <li>
+//  const product = event.target.closest(".js-product");
+
+// Щоб зберегти дані в наш localStorage нам потрібно Створити змінну куди це буде зберігатися  const products
+// const products = JSON.parse(localStorage.getItem(PRODUCT_LS) || []);
+// Щоб перетворити рядок на валідний масив нам потрібно його розпарсити JSON.parse
+// Далі ми звертаємось до localStorage і за домогою методу getItem знаходимо рядок PRODUCT_LS який перетворимо
+// у валідний масив
+// Потім поставили оператор АБО || якщо не знайдеш  [] - поверни порожній масив
