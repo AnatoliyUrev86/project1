@@ -114,26 +114,26 @@ const container = document.querySelector(".js-list");
 container.insertAdjacentHTML("beforeend", createMarkup(products));
 // Створимо функцію яка буде створювати рядок нашої розмітки
 
-function createMarkup(arr) {
-  return (
-    arr
-      // В середині map робимо деструктуризацію нашого об'єкта
-      // передаючи в круглі дужки ключі значення яких ми хочемо отримати { id, img, price, description }
-      .map(
-        ({ id, img, price, description }) => `
-        <li data-id="${id}" class="product-card js-product">
-        <img src="${img}" alt="${name}"class="product-img">
-        <h2 class="product-title">${name}</h2>
-        <p class="product-description">${description}</p>
-        <p class="product-price">${price} грн</p>
-        <button class="product-add-btn js-add">Add to basket</button>
-        </li>`
-      )
-      .join("")
-  );
-  // Для того щоб розуміти по якому товару ми клікнули додаємо дата атрибут
-  // в якому буде зберігатися унікальний id
-}
+// function createMarkup(arr) {
+//   return (
+//     arr
+// В середині map робимо деструктуризацію нашого об'єкта
+// передаючи в круглі дужки ключі значення яких ми хочемо отримати { id, img, price, description }
+//   .map(
+//     ({ id, img, price, description }) => `
+//     <li data-id="${id}" class="product-card js-product">
+//     <img src="${img}" alt="${name}"class="product-img">
+//     <h2 class="product-title">${name}</h2>
+//     <p class="product-description">${description}</p>
+//     <p class="product-price">${price} грн</p>
+//     <button class="product-add-btn js-add">Add to basket</button>
+//     </li>`
+//   )
+//   .join("")
+//   );
+// Для того щоб розуміти по якому товару ми клікнули додаємо дата атрибут
+// в якому буде зберігатися унікальний id
+// }
 
 // Тепер потрібно коли ми товари наші бачимо на сторінці реалізувати додавання їх в корзину
 // Тут ми скористаємось делегуванням і слухач події навісимо на наш container
@@ -213,6 +213,8 @@ if (products.length) {
 totalPrice.textContent = totalCost
   ? `Total cost ${totalCost} грн `
   : "Your basket is empty";
+//   Після того як ми підключили функцію для корзини createMarkup на 225 рядку пишемо те що нижче
+container.insertAdjacentHTML("beforeend", createMarkup(products));
 // В нашу змінну totalPrice за допомогою textContent хочемо присвоїти рядок
 // В залежності від того що буде в козині якщо пуста Андефайдет
 // ? - для цьго використовуємо тернарний оператор потім Шаблонні рядки ``
@@ -220,3 +222,28 @@ totalPrice.textContent = totalCost
 //Тобто коли корзина пуста виведи рядок "Your basket is empty"
 
 // Для того щоб наповнити нашу корзину продуктами ми створемо функцію
+function createMarkup(arr) {
+  return arr
+    .map(
+      ({ img, name, qty, price }) => `
+        <li class="cart-item">
+        <img src="${img}" alt="${name}"class="product-img">
+        <h2>${name}</h2>
+        <p>Quantity: ${qty}</p>
+        <p> Total price: ${qty * price} грн</p>
+        </li>`
+    )
+    .join("");
+}
+
+// ДЛЯ ТОГО ЩОБ ПРИ НАТИСКАННІ НА КНОПКУ НАША КОРЗИНА ОЧИЩАЛАСЬ ПИШЕМО НАСТУПНЕ
+clear.addEventListener("click", handleClick);
+function handleClick() {
+  localStorage.removeItem(PRODUCT_LS);
+  // localStorage.removeItem - тут звертаємось до localStorage та методу який очищає removeItem
+  // і в дужках вказуємо за яким ключем PRODUCT_LS потрібно очистити дані
+  window.location.href = "./03-shop.html";
+  // window.location.href - це ми пишемо для того щоб з порожньої корзини нас прекидало на основну сторінку
+  // "./03-shop.html" - в лапки ми передаємо посилання на html документ де розмітка на нашу основну сторінку
+  // з товарами саме її треба передавати тут назва файла в даний момент але це як приклад
+}
