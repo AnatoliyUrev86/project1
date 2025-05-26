@@ -108,10 +108,10 @@ function populateTextAres() {
 //   },
 // ];
 
-const container = document.querySelector(".js-list");
+// const container = document.querySelector(".js-list");
 // Створюємо змінну куди будуть додаватися наші продукти в корзину
 // const PRODUCT_LS = "basket";
-container.insertAdjacentHTML("beforeend", createMarkup(products));
+// container.insertAdjacentHTML("beforeend", createMarkup(products));
 // Створимо функцію яка буде створювати рядок нашої розмітки
 
 // function createMarkup(arr) {
@@ -139,36 +139,36 @@ container.insertAdjacentHTML("beforeend", createMarkup(products));
 // Тут ми скористаємось делегуванням і слухач події навісимо на наш container
 // container.addEventListener("click", handaleAdd);
 // Тепер створимо функцію handaleAdd яка буде додавати товар у корзину
-container.addEventListener("click", handaleAdd);
-function handaleAdd(event) {
-  if (!event.target.classList.contains("js-add")) {
-    return;
-  }
-  const product = event.target.closest(".js-product");
-  console.log(product);
-  // Тепер щоб витягнути значення id нам потрібно створити змінну в яку це буде зберігатися
-  // з переду ставимо + щоб перетворити наш рядок на число
-  const productId = +product.dataset.id;
-  //   const currentProduct = products.find(({ id }) => id === productId);
-  console.log(currentProduct);
-  //   const products = JSON.parse(localStorage.getItem(PRODUCT_LS) || []);
-  //   const index = products.findIndex(({ id }) => id === productId);
+// container.addEventListener("click", handaleAdd);
+// function handaleAdd(event) {
+//   if (!event.target.classList.contains("js-add")) {
+//     return;
+//   }
+//   const product = event.target.closest(".js-product");
+//   console.log(product);
+// Тепер щоб витягнути значення id нам потрібно створити змінну в яку це буде зберігатися
+// з переду ставимо + щоб перетворити наш рядок на число
+// const productId = +product.dataset.id;
+//   const currentProduct = products.find(({ id }) => id === productId);
+// console.log(currentProduct);
+//   const products = JSON.parse(localStorage.getItem(PRODUCT_LS) || []);
+//   const index = products.findIndex(({ id }) => id === productId);
 
-  if (index !== -1) {
-    // Тут якщо елемент вже є в корзині ми звертаємось до корзини  products до його елемента
-    // за [index] додати властивість qty та збільшити його на одиницю += 1
-    // products[index].qty += 1;
-  } else {
-    // Тут ми до нашого об'єкта  currentProduct додаємо властивість qty = 1 це коли його ще не має в корзині
-    // а значення ми йому 1 передали
-    currentProduct.qty = 1;
-    // Тут ми додаємо наш об'єкт currentProduct в корзину за неї відповідає products
-    // products.push(currentProduct);
-  }
-  // Тепер ми повинні оновити наші дані в localStorage
-  localStorage.setItem(PRODUCT_LS, JSON.stringify(products));
-  // 1-ше значення ключ PRODUCT_LS  2-ге значення яе products яке ми презаписуємо в localStorage
-}
+// if (index !== -1) {
+// Тут якщо елемент вже є в корзині ми звертаємось до корзини  products до його елемента
+// за [index] додати властивість qty та збільшити його на одиницю += 1
+// products[index].qty += 1;
+// } else {
+// Тут ми до нашого об'єкта  currentProduct додаємо властивість qty = 1 це коли його ще не має в корзині
+// а значення ми йому 1 передали
+// currentProduct.qty = 1;
+// Тут ми додаємо наш об'єкт currentProduct в корзину за неї відповідає products
+// products.push(currentProduct);
+// }
+// Тепер ми повинні оновити наші дані в localStorage
+// localStorage.setItem(PRODUCT_LS, JSON.stringify(products));
+// 1-ше значення ключ PRODUCT_LS  2-ге значення яе products яке ми презаписуємо в localStorage
+// }
 // Тепер нам потрібно реалізувати наступне щоб при натисканні на кнопку наш товар додавався в корзину
 // Якщо елемент на якому відбувся клік має клас js-add він нас влаштовує якщо ні то ні
 // !event.target.classList.contains("js-add")
@@ -191,30 +191,30 @@ function handaleAdd(event) {
 
 // ДЛЯ КОРЗИНИ З ТОВАРАМИ
 // ВАЖЛИВО ЦЕ РОБИТИ ОКРЕМИМ ФАЙЛОМ JS
-const totalPrice = document.querySelector(".js-total-price");
-const clear = document.querySelector(".js-clear");
-const containerEl = document.querySelector(".js-list");
-const PRODUCT_LS = "basket";
+// const totalPrice = document.querySelector(".js-total-price");
+// const clear = document.querySelector(".js-clear");
+// const containerEl = document.querySelector(".js-list");
+// const PRODUCT_LS = "basket";
 
 // Для того щоб зрозуміти чи додали ми щось в корзину чи ні для цьго ми створемо змінну
-const products = JSON.parse(localStorage.getItem(PRODUCT_LS) || []);
+// const products = JSON.parse(localStorage.getItem(PRODUCT_LS) || []);
 // Створюємо змінну в яку буде зберігатися сума наших покупок let totalCost
-let totalCost;
+// let totalCost;
 // Щоб дізнатись чи порожня наша корзина чи ні потрібно звернутися до нашого масиву products
 // і записати властивість length
-if (products.length) {
-  // Звертаємось до кнопки яка має бути коли корзина пона щоб її очистити
-  clear.hidden = false;
-  // Далі ми хочемо порахувати загальну вартість моїх продуктів
-  totalCost = products.reduse((acc, { qty, price }) => (acc += qty * price), 0);
-  // acc += qty * price - це буде проміжне значення акумулятора яке буде зберігатися на наступну ітерацію
-}
+// if (products.length) {
+// Звертаємось до кнопки яка має бути коли корзина пона щоб її очистити
+// clear.hidden = false;
+// Далі ми хочемо порахувати загальну вартість моїх продуктів
+// totalCost = products.reduse((acc, { qty, price }) => (acc += qty * price), 0);
+// acc += qty * price - це буде проміжне значення акумулятора яке буде зберігатися на наступну ітерацію
+// }
 // Перевірка
-totalPrice.textContent = totalCost
-  ? `Total cost ${totalCost} грн `
-  : "Your basket is empty";
+// totalPrice.textContent = totalCost
+//   ? `Total cost ${totalCost} грн `
+//   : "Your basket is empty";
 //   Після того як ми підключили функцію для корзини createMarkup на 225 рядку пишемо те що нижче
-container.insertAdjacentHTML("beforeend", createMarkup(products));
+// container.insertAdjacentHTML("beforeend", createMarkup(products));
 // В нашу змінну totalPrice за допомогою textContent хочемо присвоїти рядок
 // В залежності від того що буде в козині якщо пуста Андефайдет
 // ? - для цьго використовуємо тернарний оператор потім Шаблонні рядки ``
@@ -222,28 +222,31 @@ container.insertAdjacentHTML("beforeend", createMarkup(products));
 //Тобто коли корзина пуста виведи рядок "Your basket is empty"
 
 // Для того щоб наповнити нашу корзину продуктами ми створемо функцію
-function createMarkup(arr) {
-  return arr
-    .map(
-      ({ img, name, qty, price }) => `
-        <li class="cart-item">
-        <img src="${img}" alt="${name}"class="product-img">
-        <h2>${name}</h2>
-        <p>Quantity: ${qty}</p>
-        <p> Total price: ${qty * price} грн</p>
-        </li>`
-    )
-    .join("");
-}
+// function createMarkup(arr) {
+//   return arr
+//     .map(
+//       ({ img, name, qty, price }) => `
+//         <li class="cart-item">
+//         <img src="${img}" alt="${name}"class="product-img">
+//         <h2>${name}</h2>
+//         <p>Quantity: ${qty}</p>
+//         <p> Total price: ${qty * price} грн</p>
+//         </li>`
+//     )
+//     .join("");
+// }
 
 // ДЛЯ ТОГО ЩОБ ПРИ НАТИСКАННІ НА КНОПКУ НАША КОРЗИНА ОЧИЩАЛАСЬ ПИШЕМО НАСТУПНЕ
-clear.addEventListener("click", handleClick);
-function handleClick() {
-  localStorage.removeItem(PRODUCT_LS);
-  // localStorage.removeItem - тут звертаємось до localStorage та методу який очищає removeItem
-  // і в дужках вказуємо за яким ключем PRODUCT_LS потрібно очистити дані
-  window.location.href = "./03-shop.html";
-  // window.location.href - це ми пишемо для того щоб з порожньої корзини нас прекидало на основну сторінку
-  // "./03-shop.html" - в лапки ми передаємо посилання на html документ де розмітка на нашу основну сторінку
-  // з товарами саме її треба передавати тут назва файла в даний момент але це як приклад
-}
+// clear.addEventListener("click", handleClick);
+// function handleClick() {
+//   localStorage.removeItem(PRODUCT_LS);
+// localStorage.removeItem - тут звертаємось до localStorage та методу який очищає removeItem
+// і в дужках вказуємо за яким ключем PRODUCT_LS потрібно очистити дані
+// window.location.href = "./03-shop.html";
+// window.location.href - це ми пишемо для того щоб з порожньої корзини нас прекидало на основну сторінку
+// "./03-shop.html" - в лапки ми передаємо посилання на html документ де розмітка на нашу основну сторінку
+// з товарами саме її треба передавати тут назва файла в даний момент але це як приклад
+// }
+// Імпортуємо функцію add task-13.js із файлу task-14.js
+// import add from "./task-14";
+// console.log(add(2, 3));
