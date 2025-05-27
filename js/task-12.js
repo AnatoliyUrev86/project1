@@ -129,22 +129,23 @@
 
 // Задача
 // Нам потрібно отримати username,  name,  surname
-const user = {
-  id: 1,
-  username: "harry_porter",
-  profile: {
-    name: "Harry",
-    surname: "Porter",
-    age: 25,
-  },
-};
+// const user = {
+//   id: 1,
+//   username: "harry_porter",
+//   profile: {
+//     name: "Harry",
+//     surname: "Porter",
+//     age: 25,
+//   },
+// };
 // Для цього ми
 // В фігурних дужках пишемо username потім звертаємось до об'єкта profile в якому є name, surname
-const {
-  username,
-  profile: { name, surname },
-} = user;
+// const {
+//   username,
+//   profile: { name, surname },
+// } = user;
 
-console.log(`Ім'я користувача: ${name}`);
-console.log(`Прізвище користувача:${surname}`);
-console.log(`Ім'я користувача (за нікнеймом):${username}`);
+// console.log(`Ім'я користувача: ${name}`);
+// console.log(`Прізвище користувача:${surname}`);
+// console.log(`Ім'я користувача (за нікнеймом):${username}`);
+

@@ -249,4 +249,5 @@ function populateTextAres() {
 // }
 // Імпортуємо функцію add task-13.js із файлу task-14.js
 // import add from "./task-14";
+
 // console.log(add(2, 3));

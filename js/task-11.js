@@ -181,3 +181,7 @@ function handleClick(event) {
   //   яке при натисканні на наш товар буде вспливати вікно із цією позицією а остальні буде перекривати
   //   тому що це модальне вікно
 }
+
+// import { fooEl, value } from "./task-14";
+// console.log("fooEl", fooEl);
+// console.log("value", value);
