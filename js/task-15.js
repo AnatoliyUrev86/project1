@@ -82,21 +82,50 @@ for (let i = 3; i > 0; i--) {
 //  в нашій змінній inervalId і вказали час 5000 мілі секунд Тобто вона виконається а через 5000 мілі секунд
 // припинить свою роботу
 
-const notification = document.querySelector(".js-alert");
+// const notification = document.querySelector(".js-alert");
 // Створюємо функцію showNotification яка в своєму тілі буде звертатися до нашого елемента notification і додавти
 // елементу notification якийсь клас Щоб додати клас звертаємось до нашого елемента notification потім
 // classList.add("is-visible") і в дужках клас який хочемо додати
-function showNotification() {
-  notification.classList.add("is-visible");
-  setTimeout(() => {
-    console.log("hide");
-    notification.classList.remove("is-visible");
-  }, 3000);
-}
+// let timerId = null;
+// function showNotification() {
+//   notification.classList.add("is-visible");
+//   timerId = setTimeout(() => {
+//     console.log("hide");
+//     hideNotification();
+//     notification.classList.remove("is-visible");
+//   }, 3000);
+// }
 // Щоб було видно потрібно викликати функцію
-showNotification();
+// showNotification();
 
 // Нехай вікно яке у нас з'явилося після виклику функції showNotification(); ховається через певний час
 // ми в середині нашої функції showNotification пришемо метод setTimeout потім клас до якого
 // ми звертаємось classList.add("is-visible") потім очищаємо notification.classList.remove("is-visible")
 // і час на виконання  3000 мілі секунд
+
+// Тепер потрібно реалізувати щоб при кліку на елемент він ховався
+// notification.addEventListener("click", onNotificationClick);
+// function onNotificationClick() {
+//   notification.classList.remove("is-visible");
+// }
+
+// function onNotificationClick() {
+//     hideNotification();
+//     clearTimeout(timerId);
+// }
+// Функція onNotificationClick повинна брати цей код і notification.classList.remove("is-visible"); і
+// видаляти цей "is-visible" клас при натисканні на наш елемент
+// Тепер створюємо ще одну функцію яка буде виконувати функцію видалення а в місцях де це видалення
+// потрібно ми будемо її викликати hideNotification()
+// function hideNotification() {
+//   notification.classList.remove("is-visible");
+// }
+
+// Потім ми створюємо змінну в яку присвоюємо значення let timerId = null; і потім ми timerId = setTimeout
+// timerId присвоюємо значення нашому методу setTimeout
+// І в timerId буде присвоєно унікальний ідентифікатор цього setTimeout
+
+// Потім ми припиняємо роботу нашого setTimeout прописуємо clearTimeout(timerId) і в круглих дужках передаємо
+// унікальний ідентифікатор цього setTimeout
+
+
