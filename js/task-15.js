@@ -5,16 +5,16 @@
 // 1-й ()=>{} - колбек або стрілочна функція яка передається в іншу функцію як аргумент
 // 2-й 2000 - це час в  мілі секундах він потрібен для того щоб наш метод setTimeout запустив функцію ()=>{}
 // передану як перший аргумент саме через цей проміжок часу тобто через 2000 мілі секунд
-console.log("a");
-setTimeout(() => {
-  console.log("time-1");
-}, 2000);
-console.log("a");
-setTimeout(() => {
-  console.log("time-2");
-}, 2000);
+// console.log("a");
+// setTimeout(() => {
+//   console.log("time-1");
+// }, 2000);
+// console.log("a");
+// setTimeout(() => {
+//   console.log("time-2");
+// }, 2000);
 
-console.log("c");
+// console.log("c");
 // Результат у консолі буде з початку а потім с потім time хоча time мав би бути другим але відпрацював останнім
 // все відбувається тому що наш метод setTimeout а синхронний
 // Якщо ми додамо ще одну функцію із time-2
@@ -22,12 +22,12 @@ console.log("c");
 // в такому випадку вони виконуються по черзі з початку time-1 потім  time-2 якщо в них час буде різний то
 // виконуватися буде першим той час якого для виконання менший
 
-for (let i = 3; i > 0; i--) {
-  const delay = i * 1000;
-  setTimeout(() => {
-    console.log(i);
-  }, delay);
-}
+// for (let i = 3; i > 0; i--) {
+//   const delay = i * 1000;
+//   setTimeout(() => {
+//     console.log(i);
+//   }, delay);
+// }
 // i-- це означає що значення i після множення на 1000 буде зменшуватися з початку буде 3000 потім 2000 тобто
 // 3 та 2 мілі секунди для виконання коду
 
@@ -129,14 +129,27 @@ for (let i = 3; i > 0; i--) {
 // унікальний ідентифікатор цього setTimeout
 
 // Робота з датами
-const currentDate = new Date();
+// const currentDate = new Date();
 // Щоб створити екземпляр класу викорстовуємо ключове слово new і назва класу екземпляр якого ми хочемо
-// створити  Date()
+// створити  Date()- якщо в круглі дужки Date ми нічого не передаємо то отримаємо
+// поточну дату на той час коли ми це напишемо
 // console.log(currentDate);
 // У консолі ми отримаємо дату та час після виклику console.log(currentDate);
 
 // У цього нового екземпляру класу new Date() є цікаві методи
-const day = currentDate.getDay();
-console.log(day);
+// const day = currentDate.getDay();
+// console.log(day);
 // Ми тут звертаємось до екземпляру currentDate нашої дати і викликаємо метод getDay() - він повертає нам у консоль
 // день тижня починаючи з неділі і нуля наприклад 4-й день
+
+// Тут ми отримуємо число місяця
+// const date = currentDate.getDate();
+// console.log(date);
+
+// Тут ми отримаємо який місяць по рахунку йде
+// const month = currentDate.getMonth();
+// console.log(month);
+
+// Написати таймер який буде запускати ти зупиняти відлік часу
+const startBtn = document.querySelector("button[data-action-start]");
+const stopBtn = document.querySelector("button[ data-action-stop]");
