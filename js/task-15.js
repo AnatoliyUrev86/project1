@@ -153,3 +153,62 @@
 // Написати таймер який буде запускати ти зупиняти відлік часу
 const startBtn = document.querySelector("button[data-action-start]");
 const stopBtn = document.querySelector("button[ data-action-stop]");
+// [ data-action-stop] - щоб отримати елемент саме за цим атрибутом
+// Тепер створюємо нашу  змінну куди де ми будемо отримувати наш відлік часу
+const clockface = document.querySelector(".clockface");
+
+// Створюємо клас Timer
+class Timer {
+  constructor() {
+    // Створюємо властивість за допомогою constructor  яка буде відповідати за те чи запущений наш
+    //  Timer чи ні
+    this.isActive = false;
+  }
+  // Щоб запускати нашу кнопочку створемо медод  start
+  start() {
+    // Ми створюємо змінну яка буде відображати кількість мілі секунд яка пройла після натискання
+    // кнопки і виклику методу start() - Date.now()
+    const stsrtTime = Date.now();
+    startBtn.addEventListener("click", timer.start.bind(timer));
+    // Тепер ми хочемо через кожну секунду отримувати нове значення Date.now() для цьго нам допоможе метод
+    //  setInterval
+    setInterval(() => {
+      // Створюємо змінну куди будемо отримувати яка кількість мілі секунд пройла через кожну секунду
+      const currentTime = Date.now();
+      // Тепер створюємо змінну куди будемо відображати різницю часу при натисканні на кнопку stsrtTime
+      // і після цьго як вона спрацювала currentTime currentTime - stsrtTime
+      const deltaTime = currentTime - stsrtTime;
+      console.log(deltaTime);
+    }, 1000);
+    //   Тепер ми перевіряємо чи хоча б один раз наш медод start був запущений ми потрапимо в середину нашого
+    //   циклу  if
+    if (this.isActive) {
+      return;
+    }
+    //   Тепер якщо функція не була запущена жодного разу ми потрапляємо в цикл if і пишемо нижче
+    this.isActive = true;
+    //   Тепер нам треб зрозуміти скільки в цих мілі секундах які ми запустили годин та хвилин
+    // const time = getTimeComponents(deltaTime);
+    //   Створюємо змінну time  в якій буде метод getTimeComponents який буде приймати кількість
+    // мілі секунд deltaTime
+  }
+  getTimeComponents(time) {
+    //   Створюємо змінну для годин
+    const hours = time % (1000 * 60 * 60 * 24);
+    //   Створюємо змінну яка буде відповідати за хвилини
+    const mins = Math.floor(time % (1000 * 60 * 60)) / (1000 * 60);
+    // Тут ми розраховуємо хвилини та секунди
+    const secs = Math.floor((time % (1000 * 60)) / 1000);
+    //    Math.floor - щоб округлити мілі секунди до секунд і беремо при цьому все в дужки
+    console.log(mins, secs);
+    //   ПИТАННЯ ЧОМУ В КОНСОЛІ ПОМИЛКА ПІСЛЯ ЗАПУСКУ  - ВТРАТА КОНТЕКСТУ
+  }
+}
+
+// Створемо екземпляр нашго класу Timer
+const timer = new Timer();
+// Тепер ми вішаємо наш слухач подій addEventListener на натискання кнопки старт  timer.start
+// startBtn.addEventListener("click", timer.start);
+// ПОМИЛКА ПІСЛЯ ЗАПУСКУ - щоб виправити помилку тут потрібно перезаписати тобто передати посилання на функцію з
+// прив'язаним контекстом bind(timer)
+// startBtn.addEventListener("click", timer.start.bind(timer));
