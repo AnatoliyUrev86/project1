@@ -1,22 +1,25 @@
 // МОДУЛЬ 10 ЗАНЯТТЯ 2
 // Як нам самостійно створити Проміс для робоити з Асинхронним кодом
-const promise = new Promise((resolve, reject) => {
-  const random = Math.random();
-  setTimeout(() => {
-    if (random > 0.5) {
-      resolve("ok");
-    } else {
-      reject("ops");
-    }
-  }, 2000);
-});
-promise
-  .then((resolve) => {
-    console.log("then", resolve);
-  })
-  .catch((error) => {
-    console.log("catch", error);
-  });
+// const promise = new Promise((resolve, reject) => {
+//   const random = Math.random();
+//   setTimeout(() => {
+//     if (random > 0.5) {
+//       resolve("ok");
+//     } else {
+//       reject("ops");
+//     }
+//   }, 2000);
+// });
+// promise
+//   .then((resolve) => {
+//     console.log("then", resolve);
+//   })
+//   .catch((error) => {
+//     console.log("catch", error);
+//   })
+//   .finalli(() => {
+//     console.log("promise");
+//   });
 
 // Щоб створити проміс для роботи з асинхронним кодом створюємо змінну promise ми звертаємось до класу Promise
 // І створюємо його екземпляр new Promise як параметри в круглі дужки передаємо стрілочну функцію яка буде
@@ -38,3 +41,29 @@ promise
 // Ця функція приймає в себе як параметр успішне виконання нашого промісу resolve
 // Тепер викликаємо метод який буде обробляти помилку .catch він приймає в себе колбук функцію а функція буде
 // отримувати значення яке буде при помилці нашого промісу "ops"
+// .finalli() - даний метод виконується в будь якому випадку не залежно від того як наш проміс виконається
+// успішно чи помилкою він так само приймає колбек функцію
+// але без параметрів тому що ми не знаємо чим завершиться наш промі успшно чи помилкою
+// Також має бути дотримана послідовність скільки б методів не було по кількості
+// 1-й має бути  .then 2-й має бути .catch 3-й має бути .finalli
+
+// СТВОРЕННЯ ЛАНЦЮЖКІВ ДЛЯ promise
+// const promise = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     resolve(5);
+//   }, 1000);
+// });
+// promise
+//   .then((res) => {
+//     return res * 2;
+//   })
+//   .then((data) => {
+//     console.log(data);
+//   })
+//   .catch((err) => {
+//         console.log(err);
+//       })
+
+// З методу then завжди буде повертатися promise і загорнуте в нього значення res * 2 для того щоб обробити
+// цей результат promise тобто res * 2 ми створюємо ще один метод then де буде оброблятися результат
+// Таким чинов вибудовується наш ланцюжок promise
