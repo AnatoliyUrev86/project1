@@ -98,28 +98,28 @@
 // Проблема доступу до результату проміса з колбеком
 // Функція яка повертає проміс
 
-const makeOrder = (dish, onSuccess, onError) => {
-  const random = Math.random();
-  setTimeout(() => {
-    if (random > 0.5) {
-      onSuccess(`Ваше замовлення ${dish}`);
-      return;
-    }
-    onError(`Закінчились продукти`);
-  }, 1000);
-};
+// const makeOrder = (dish, onSuccess, onError) => {
+//   const random = Math.random();
+//   setTimeout(() => {
+//     if (random > 0.5) {
+//       onSuccess(`Ваше замовлення ${dish}`);
+//       return;
+//     }
+//     onError(`Закінчились продукти`);
+//   }, 1000);
+// };
 
-makeOrder(
-  "Пиріжок",
-  (result) => {
-    console.log("success");
-    console.log(result);
-  },
-  (error) => {
-    console.log("error");
-    console.log(error);
-  }
-);
+// makeOrder(
+//   "Пиріжок",
+//   (result) => {
+//     console.log("success");
+//     console.log(result);
+//   },
+//   (error) => {
+//     console.log("error");
+//     console.log(error);
+//   }
+// );
 
 // Створюємо функцію makeOrder яка буде приймати в себе три параметри
 // 1-й dish - буде рядок
@@ -127,5 +127,40 @@ makeOrder(
 // 3-й onError - метод функція беде виконуватися якщо Асинхронний код написаний завершиться помилкою
 // Запускаємо нашу функцію makeOrde і передаємо в неї рядок  "Пиріжок" далі у нас йде функція onSuccess і ми її
 // відразу робимо стрілочною вона буде отримувати результат (result) і виводити в консоль два рядочки
-// Далі йде функція onError ми її також відразу робимо стрілочною вона приймає в себе  (error) і виводить у 
-// консоль два рядочки якщо буде помилка 
+// Далі йде функція onError ми її також відразу робимо стрілочною вона приймає в себе  (error) і виводить у
+// консоль два рядочки якщо буде помилка
+
+// МЩЖЕМО ЗАПИСАТИ ЗАПИС ВИЩЕ ПО ШНШОМУ
+
+// Замість того щоб викликати одну а потім іншу функцію ми робимо Промисифікацію ми створюємо проміс
+// який буде  об'єктом з певним результатом
+const makeOrde = (dish) => {
+  return new Promise((resolve, reject) => {
+    const random = Math.random();
+    setTimeout(() => {
+      if (random > 0.5) {
+        resolve(`Ваше замовлення ${dish}`);
+      }
+      reject(`Закінчились продукти`);
+    }, 1000);
+  });
+};
+
+// console.log(makeOrde);
+makeOrde("Пиріжок")
+  .then((result) => {
+    console.log(result);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+
+// Тепер ми бачемо у консолі що наша функція повертає проміс  return new Promise або який успішно завершиться  resolve
+// або який з помилкою  reject тепер результат нашого асинхронного коду ми не обробляємо в середині нашої функції
+// ми обробляти його не будемо ми просто повертаємо проміс  return new Promise
+// Ми обробляємо його на зовні
+
+// Промисифікація синхронних функцій
+
+// Promise.resolve();
+// Promise.reject();
