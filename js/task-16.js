@@ -80,15 +80,52 @@
 // ДО МАКРО ПРОЦЕСІВ ВІДНОСЯТЬСЯ -  setTimeout та setInterval
 // Під час виконання у нас буде виконуватися Асинхронний код
 
-console.log("step 1");
+// console.log("step 1");
 
-setTimeout(() => {
-  console.log("step 2");
-}, 0);
+// setTimeout(() => {
+//   console.log("step 2");
+// }, 0);
 
-new Promise(() => {
-  resolve("step 3");
-}).then((data) => console.log(data));
-setTimeout(() => {
-  console.log("step 3");
-}, 0);
+// new Promise(() => {
+//   resolve("step 3");
+// }).then((data) => console.log(data));
+// setTimeout(() => {
+//   console.log("step 3");
+// }, 0);
+
+// ПРОМІСИФІКАЦІЯ
+
+// Проблема доступу до результату проміса з колбеком
+// Функція яка повертає проміс
+
+const makeOrder = (dish, onSuccess, onError) => {
+  const random = Math.random();
+  setTimeout(() => {
+    if (random > 0.5) {
+      onSuccess(`Ваше замовлення ${dish}`);
+      return;
+    }
+    onError(`Закінчились продукти`);
+  }, 1000);
+};
+
+makeOrder(
+  "Пиріжок",
+  (result) => {
+    console.log("success");
+    console.log(result);
+  },
+  (error) => {
+    console.log("error");
+    console.log(error);
+  }
+);
+
+// Створюємо функцію makeOrder яка буде приймати в себе три параметри
+// 1-й dish - буде рядок
+// 2-й onSuccess - метод функція беде виконуватися якщо Асинхронний код написаний завершиться успіхом
+// 3-й onError - метод функція беде виконуватися якщо Асинхронний код написаний завершиться помилкою
+// Запускаємо нашу функцію makeOrde і передаємо в неї рядок  "Пиріжок" далі у нас йде функція onSuccess і ми її
+// відразу робимо стрілочною вона буде отримувати результат (result) і виводити в консоль два рядочки
+// Далі йде функція onError ми її також відразу робимо стрілочною вона приймає в себе  (error) і виводить у 
+// консоль два рядочки якщо буде помилка 
