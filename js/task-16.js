@@ -134,26 +134,26 @@
 
 // Замість того щоб викликати одну а потім іншу функцію ми робимо Промисифікацію ми створюємо проміс
 // який буде  об'єктом з певним результатом
-const makeOrde = (dish) => {
-  return new Promise((resolve, reject) => {
-    const random = Math.random();
-    setTimeout(() => {
-      if (random > 0.5) {
-        resolve(`Ваше замовлення ${dish}`);
-      }
-      reject(`Закінчились продукти`);
-    }, 1000);
-  });
-};
+// const makeOrde = (dish) => {
+//   return new Promise((resolve, reject) => {
+//     const random = Math.random();
+//     setTimeout(() => {
+//       if (random > 0.5) {
+//         resolve(`Ваше замовлення ${dish}`);
+//       }
+//       reject(`Закінчились продукти`);
+//     }, 1000);
+//   });
+// };
 
-// console.log(makeOrde);
-makeOrde("Пиріжок")
-  .then((result) => {
-    console.log(result);
-  })
-  .catch((error) => {
-    console.log(error);
-  });
+// // console.log(makeOrde);
+// makeOrde("Пиріжок")
+//   .then((result) => {
+//     console.log(result);
+//   })
+//   .catch((error) => {
+//     console.log(error);
+//   });
 
 // Тепер ми бачемо у консолі що наша функція повертає проміс  return new Promise або який успішно завершиться  resolve
 // або який з помилкою  reject тепер результат нашого асинхронного коду ми не обробляємо в середині нашої функції
@@ -165,40 +165,45 @@ makeOrde("Пиріжок")
 // Promise.resolve();
 // Promise.reject();
 
-const stsrtTime = Date.now();
+// const stsrtTime = Date.now();
 
-const res1 = () => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      const currentTime = Date.now();
-      const delta = currentTime - stsrtTime;
+// const res1 = () => {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       const currentTime = Date.now();
+//       const delta = currentTime - stsrtTime;
 
-      resolve({ title: "first", time: delta });
-    }, 2000);
-  });
-};
+//       resolve({ title: "first", time: delta });
+//     }, 2000);
+//   });
+// };
 
-const res2 = () => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      const currentTime = Date.now();
-      const delta = currentTime - stsrtTime;
+// const res2 = () => {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       const currentTime = Date.now();
+//       const delta = currentTime - stsrtTime;
 
-      resolve({ title: "second", time: delta });
-    }, 1000);
-  });
-};
+//       resolve({ title: "second", time: delta });
+//     }, 1000);
+//   });
+// };
 
-const res3 = () => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      const currentTime = Date.now();
-      const delta = currentTime - stsrtTime;
+// const res3 = () => {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       const currentTime = Date.now();
+//       const delta = currentTime - stsrtTime;
 
-      resolve({ title: "third", time: delta });
-    }, 4000);
-  });
-};
+//       resolve({ title: "third", time: delta });
+//     }, 4000);
+//   });
+// };
+
+// Promise.all([res1(), res2(), res3()]).then((data) => console.log(data));
+// Promise.race([res1(), res2(), res3()])
+//   .then((data) => console.log("then", data))
+//   .catch((error) => console.log("catch", error));
 
 // Створюємо три зміних які будуть приймати в себе колбек функцію та створюємо новий екземпляр промісу  new Promise
 // як параметри передаємо успішне виконання промісу resolve та не успішне виконання промісу з помилкою reject
@@ -207,3 +212,42 @@ const res3 = () => {
 // Та створюємо змінну куди будемо записувати різницю між currentTime - stsrtTime
 // У нас є три проміси які виконуються у різний час це як різні три сервери на які ми відправили запити щоб
 // отримати данні
+// Promise.all([]) - цей метод приймає в себе масив промісів він буде чекати доки виконаються всі проміси
+// res1, res2, res3 і лише після цьго поверне їх результат
+// Щоб передати наші проміси в масив нашого Promise.all ми повинні їх викликати в квадратних дужках тобто
+// передати їх назву і поставити після круглі дужки [res1(), res2(), res3()]
+// Promise.race([]) - цей метод також приймає в себе масив промісів який виконається найшвидше
+
+// ЗАДАЧА
+
+const startBtn = document.querySelector(".stsrt-btn");
+const result = document.querySelector(".result");
+const container = document.querySelector(".container");
+
+startBtn.addEventListener("click", handalClick);
+function handalClick() {
+  const promises = [...container.children].map(() => {
+    return new Promise((resolve, reject) => {
+      const random = Math.random();
+      if (random > 0.5) {
+        resolve("won");
+      } else {
+        reject("lost");
+      }
+    });
+  });
+  Promise.allSettled([promises]).then((data) => {
+    data.forEach((item, i));
+    container.children[i].textContent = "";
+    const isWinner = data.every(
+      (item) =>
+        item.status === "fulfilled" ||
+        data.every((item) => item.status === "rejtc")
+    );
+
+    setTimeout(() => {
+      container.children[i].textContent = item.value || item.reason;
+    }, 1000 * (i + 1));
+    result.textContent = isWinner ? "Winner" : "Luser";
+  });
+}
