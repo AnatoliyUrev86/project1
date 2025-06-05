@@ -164,3 +164,46 @@ makeOrde("Пиріжок")
 
 // Promise.resolve();
 // Promise.reject();
+
+const stsrtTime = Date.now();
+
+const res1 = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const currentTime = Date.now();
+      const delta = currentTime - stsrtTime;
+
+      resolve({ title: "first", time: delta });
+    }, 2000);
+  });
+};
+
+const res2 = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const currentTime = Date.now();
+      const delta = currentTime - stsrtTime;
+
+      resolve({ title: "second", time: delta });
+    }, 1000);
+  });
+};
+
+const res3 = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const currentTime = Date.now();
+      const delta = currentTime - stsrtTime;
+
+      resolve({ title: "third", time: delta });
+    }, 4000);
+  });
+};
+
+// Створюємо три зміних які будуть приймати в себе колбек функцію та створюємо новий екземпляр промісу  new Promise
+// як параметри передаємо успішне виконання промісу resolve та не успішне виконання промісу з помилкою reject
+// Потім запускаємо наш асинхронний код через метод  setTimeout який приймає перший аргумент колбек функцію в якій
+// створюємо змінні які приймаєть екземпляр новий нашого промісу  const currentTime = Date.now();
+// Та створюємо змінну куди будемо записувати різницю між currentTime - stsrtTime
+// У нас є три проміси які виконуються у різний час це як різні три сервери на які ми відправили запити щоб
+// отримати данні
