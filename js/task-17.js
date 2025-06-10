@@ -1,4 +1,13 @@
 // МОДУЛЬ 11 ПЕРШЕ ЗАНЯТТЯ
 // Для того щоб зробити запит на сервер використовуємо метод fetch()
-console.log(fetch("http://jsonplaceholder.typicode.com/todos"));
-// В цей метод як аргумент передається URL "http://jsonplaceholder.typicode.com/todos" за яким ми хочемо зробити запит
+fetch("http://jsonplaceholder.typicode.com/todos")
+  // В цей метод як аргумент передається URL "http://jsonplaceholder.typicode.com/todos" за яким ми хочемо зробити запит
+  // Метод fetch - це асинхронна оперрація тому що ми не знаємо за який час сервер виконає наш запит
+  // Метод fetch повертає нам у консолі Проміс то нам потрібно його обробити за допомогою методів
+  // .then - коли проміс успішно завершився та методу .catch - коли проміс завершився помилкою
+  .then((res) => {
+    console.log(res);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
